@@ -13,6 +13,9 @@ const Header = () => {
 				<Link className="header__nav-link" to="/login">
 					Login
 				</Link>
+				<Link className="header__nav-link" to="/login">
+					i love bitcoin!!
+				</Link>
 				<Link className="header__nav-link" to="/register">
 					Register
 				</Link>
