@@ -37,7 +37,7 @@ export function Home() {
 					<Output inputValue={inputValue} onReset={handleReset} />
 					</div>
 				)}
-    </div>
+			</div>
 		</main>
 	);
 }

@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+	};
+
+
 	return (
 		<header className="header">
-			<h1 className="header__title">WordWise</h1>
-			<nav className="header__nav">
-				<Link className="header__nav-link" to="/about">
+			<h1 className="header-title">WordWise</h1>
+			<button
+				className={`hamburger-menu ${isOpen ? "open" : ""}`}
+				onClick={toggleMenu}
+				aria-label="Toggle Menu"
+			>
+				<div></div>
+				<div></div>
+				<div></div>
+			</button>
+			<nav className={`header-nav ${isOpen ? "open" : " "}`}>
+				<Link className="header-nav-link" to="/about">
 					About
 				</Link>
-				<Link className="header__nav-link" to="/login">
+				<Link className="header-nav-link" to="/login">
 					Login
 				</Link>
-				<Link className="header__nav-link" to="/register">
+				<Link className="header-nav-link" to="/register">
 					Register
 				</Link>
 			</nav>
