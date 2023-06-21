@@ -1,13 +1,13 @@
 import "./Home.css";
 import Header from "./Header.js";
+import Footer from "./Footer";
 
 export function Home() {
 
 	return (
 		<main role="main">
-			<div>
-				<Header />
-			</div>
+			<Header />
+			<Footer />
 		</main>
 	);
 }
