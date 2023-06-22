@@ -1,8 +1,8 @@
 import "./Home.css";
-import Header from "./Header.js";
+import Header from "../components/Header.js";
 import React, { useState } from "react";
-import Input from "./Input.js";
-import Output from "./Output.js";
+import Input from "../components/Input.js";
+import Output from "../components/Output.js";
 
 export function Home() {
 
