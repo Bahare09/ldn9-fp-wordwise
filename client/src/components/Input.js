@@ -16,18 +16,17 @@ const Input = ({ onInputChange, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Enter something..."
-        className="input-field"
-      />
-      <button type="submit" className="submit-button">
-        Submit &#10148;
-      </button>
-    </form>
+    <div className="input-container">
+    <textarea
+      value={inputValue}
+      onChange={handleInputChange}
+      placeholder="Enter something..."
+      className="input-field"
+    />
+    <button type="submit" className="submit-button" onClick={handleSubmit}>
+      &#10148;
+    </button>
+  </div>
   );
 };
 

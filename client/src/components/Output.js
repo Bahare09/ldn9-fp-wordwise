@@ -4,9 +4,9 @@ import "./InputOutput.css";
 const Output = ({ inputValue, onReset }) => {
   return (
     <div>
-      <input type="text" value={inputValue} readOnly className="output-field" />
+      <textarea className="output-field">{ inputValue }</textarea>
       <button onClick={onReset} className="submit-button">
-        &#10149; back to Input
+        &#10149;
       </button>
     </div>
   );
