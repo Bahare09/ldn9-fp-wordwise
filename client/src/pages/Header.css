@@ -2,6 +2,7 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     background-color: #f5f5f5;
 }
@@ -38,7 +39,6 @@
     border: none;
     padding: 0;
     box-sizing: border-box;
-    align-items: center;
     position: relative;
 }
 
@@ -46,28 +46,29 @@
     width: 2rem;
     height: 0.25rem;
     background-color: #818181;
+    position: relative;
 }
 
 .hamburger-menu.open div {
     background-color: transparent;
 }
 
-.hamburger-menu.open div::before,
-.hamburger-menu.open div::after {
+.hamburger-menu.open div:nth-child(2)::before,
+.hamburger-menu.open div:nth-child(2)::after {
     position: absolute;
     content: "";
     height: 0.25rem;
     width: 2rem;
     background-color: #818181;
-    top: 0.875rem;
-    right: 0.335rem;
+    top: 0;
+    right: 0;
 }
 
-.hamburger-menu.open div::before {
+.hamburger-menu.open div:nth-child(2)::before {
     transform: rotate(45deg);
 }
 
-.hamburger-menu.open div::after {
+.hamburger-menu.open div:nth-child(2)::after {
     transform: rotate(-45deg);
 }
 
