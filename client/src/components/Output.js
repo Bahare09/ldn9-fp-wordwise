@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./InputOutput.css";
 
 const Output = ({ inputValue, onReset }) => {
   return (
