@@ -1,45 +1,43 @@
-import "./Home.css";
-import Header from "../components/Header.js";
 import React, { useState } from "react";
-import Input from "../components/Input.js";
-import Output from "../components/Output.js";
+import Header from "../components/Header";
+import Input from "../components/Input";
+import Output from "../components/Output";
+import "./Home.css";
 
-export function Home() {
+const Home =()=> {
+const [showOutput, setShowOutput] = useState(false);
+const [outputValue, setOutputValue] = useState("");
 
-	const [inputValue, setInputValue] = useState("");
-	const [showOutput, setShowOutput] = useState(false);
+const handleSubmit = (data) => {
+setOutputValue(data);
+setShowOutput(true);
+};
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-  };
+const handleReset = () => {
+setShowOutput(false);
+setOutputValue("");
+};
 
-  const handleSubmit = () => {
-    setShowOutput(true);
-  };
-
-  const handleReset = () => {
-    setShowOutput(false);
-    setInputValue("");
-  };
-
-	return (
-		<main role="main">
-			<div>
-				<Header />
-			</div>
-			<div className="app">
-				{!showOutput ? (
-					<div className="input-container">
-					<Input onInputChange={handleInputChange} onSubmit={handleSubmit} />
-					</div>
-				) : (
-					<div className="input-container">
-					<Output inputValue={inputValue} onReset={handleReset} />
-					</div>
-				)}
-    </div>
-		</main>
-	);
-}
+return (
+<main role="main">
+<div>
+<Header />
+</div>
+<div className="app">
+{!showOutput ? (
+<div className="input-container">
+<Input onSubmit={handleSubmit} />
+</div>
+) : (
+<div className="input-container">
+<Output outputValue={outputValue} onReset={handleReset} />
+</div>
+)}
+</div>
+</main>
+);
+};
 
 export default Home;
+
+
