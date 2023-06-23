@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Input from "../components/Input";
 import Output from "../components/Output";
+import Footer from "./Footer";
 import "./Home.css";
 
 const Home = () => {
@@ -34,9 +35,14 @@ const Home = () => {
 					</div>
 				)}
 			</div>
+			<div>
+				<Footer />
+			</div>
 		</main>
 	);
 };
 
 export default Home;
+
+
 
