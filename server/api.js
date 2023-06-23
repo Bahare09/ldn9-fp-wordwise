@@ -9,4 +9,12 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 
+router.post("/", (req, res) => {
+	const input = req.body.input;
+
+	// convert the input value to uppercase
+	const output = input.toUpperCase();
+
+	res.json(output);
+});
 export default router;

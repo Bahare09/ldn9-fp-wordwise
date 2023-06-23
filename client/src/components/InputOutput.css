@@ -1,0 +1,49 @@
+.app {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .input-field{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: 100vh;
+    background-color: lightgray;
+    border: none;
+  }
+
+  .output-field{
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    height: 300px;
+    background-color: rgb(133, 133, 133);
+    border: none;
+    color: white;
+  }
+  
+  .submit-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    border-radius: 50%;
+  }
+
+  
+  
