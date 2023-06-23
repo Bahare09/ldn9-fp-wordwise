@@ -27,26 +27,21 @@ export function Home() {
 
 	return (
 		<main role="main">
-
-			
-			
 			<div>
 				<Header />
-		
-			<div className="app">
-				{!showOutput ? (
-					<div className="input-container">
-					<Input onInputChange={handleInputChange} onSubmit={handleSubmit} />
-					</div>
-				) : (
-					<div className="input-container">
-					<Output inputValue={inputValue} onReset={handleReset} />
-					</div>
-				)}
-       
-    </div>
- <Footer />
-      	</div>
+				<div className="app">
+					{!showOutput ? (
+						<div className="input-container">
+						<Input onInputChange={handleInputChange} onSubmit={handleSubmit} />
+						</div>
+					) : (
+						<div className="input-container">
+						<Output inputValue={inputValue} onReset={handleReset} />
+						</div>
+					)}
+				</div>
+				<Footer />
+			</div>
 		</main>
 	);
 }

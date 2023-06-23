@@ -30,7 +30,7 @@ function Footer() {
 						<img
 							src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
 							alt="cyf logo"
-						></img>
+						/>
 					</span>
 					.
 				</p>
