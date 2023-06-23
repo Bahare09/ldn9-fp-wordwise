@@ -1,49 +1,48 @@
-import "./Home.css";
-import Footer from "./Footer";
-import Header from "../components/Header.js";
-
 import React, { useState } from "react";
-import Input from "../components/Input.js";
-import Output from "../components/Output.js";
+import Header from "../components/Header";
+import Input from "../components/Input";
+import Output from "../components/Output";
+import Footer from "./Footer";
+import "./Home.css";
 
-
-export function Home() {
-
-	const [inputValue, setInputValue] = useState("");
+const Home = () => {
 	const [showOutput, setShowOutput] = useState(false);
+	const [outputValue, setOutputValue] = useState("");
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-  };
+	const handleSubmit = (data) => {
+		setOutputValue(data);
+		setShowOutput(true);
+	};
 
-  const handleSubmit = () => {
-    setShowOutput(true);
-  };
-
-  const handleReset = () => {
-    setShowOutput(false);
-    setInputValue("");
-  };
+	const handleReset = () => {
+		setShowOutput(false);
+		setOutputValue("");
+	};
 
 	return (
 		<main role="main">
 			<div>
 				<Header />
-				<div className="app">
-					{!showOutput ? (
-						<div className="input-container">
-						<Input onInputChange={handleInputChange} onSubmit={handleSubmit} />
-						</div>
-					) : (
-						<div className="input-container">
-						<Output inputValue={inputValue} onReset={handleReset} />
-						</div>
-					)}
-				</div>
+			</div>
+			<div className="app">
+				{!showOutput ? (
+					<div className="input-container">
+						<Input onSubmit={handleSubmit} />
+					</div>
+				) : (
+					<div className="input-container">
+						<Output outputValue={outputValue} onReset={handleReset} />
+					</div>
+				)}
+			</div>
+			<div>
 				<Footer />
 			</div>
 		</main>
 	);
-}
+};
 
 export default Home;
+
+
+

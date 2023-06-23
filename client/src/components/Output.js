@@ -1,15 +1,16 @@
 import React from "react";
 import "./InputOutput.css";
 
-const Output = ({ inputValue, onReset }) => {
-  return (
-    <div>
-      <input type="text" value={inputValue} readOnly className="output-field" />
-      <button onClick={onReset} className="submit-button">
-        &#10149; back to Input
-      </button>
-    </div>
-  );
+const Output = ({ outputValue, onReset }) => {
+	return (
+		<div>
+			<textarea className="output-field" value={outputValue} readOnly />
+			<button onClick={onReset} className="submit-button">
+				&#10149;
+			</button>
+		</div>
+	);
 };
 
 export default Output;
+
