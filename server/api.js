@@ -23,7 +23,18 @@ router.post("/", async (req, res) => {
 		messages: [
 			{
 				role: "user",
-				content: `correct any grammar or spelling mistakes in the sentence and offer three alternative choices : ${text}`,
+				content: `
+				You are a copywriter. Your job is to take some user text and make it better.
+				- Improve the grammar
+				- Make it more engaging 
+				- Make it as concise as possible without sacrificing clarity
+				
+				The user typed the following:
+				
+				"${text}"
+				
+				Please re-write it, and make it better
+				`,
 			},
 		],
 	});
