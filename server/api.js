@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 		],
 	});
 
-	res.json(completion.data);
+	res.json(completion.data.choices[0].message.content);
 });
 
 export default router;
