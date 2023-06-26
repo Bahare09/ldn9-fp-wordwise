@@ -22,9 +22,8 @@ const Input = ({ onSubmit }) => {
 
 			if (response.ok) {
 				const data = await response.json();
-				const correctedSentence = data.choices[0].message.content;
-				onSubmit(correctedSentence);
-				console.log(correctedSentence);
+				const correctedSentence = data;
+				onSubmit(correctedSentence);				
 			} else {
 				console.log("Error: " + response.status);
 			}
