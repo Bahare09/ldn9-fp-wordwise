@@ -13,24 +13,20 @@
     height: 100vh;
   }
   
-  .input-field{
+  .input-field , 
+  .output-field {
     display: flex;
     padding: 10px;
     width: 100%;
     height: 100vh;
-    background-color: lightgray;
+    background-color: rgb(225, 247, 255);
     border: none;
+    font-size: 18px;
   }
 
-  .output-field{
-    display: flex;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 100%;
+  .output-field {
     height: 300px;
-    background-color: rgb(133, 133, 133);
-    border: none;
-    color: white;
+    background-color: rgb(180, 234, 255);
   }
   
   .submit-button {
@@ -43,7 +39,61 @@
     right: 25px;
     bottom: 25px;
     border-radius: 50%;
+    position: fixed;
+    height: 55px;
+    width: 55px;
   }
+
+  .back-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 50%;
+    position: fixed;
+    rotate: 180deg;
+    height: 55px;
+    width: 55px;
+    top: 50%;
+    right: 15px;
+  }
+
+  /* ------------ Responsive input & output ------------ */
+
+  .input-output-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 1px;
+  }
+
+  .input-output-wrapper > .input-container, .output-container {
+    width: 50%;
+  }
+
+  .input-output-wrapper .input-container {
+    height: 300px;
+  }
+
+  .input-output-wrapper .back-button {
+    visibility: hidden;
+  }
+
+ .input-output-wrapper .submit-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 48%;
+  bottom: 63%;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+ } 
+
 
   
   
