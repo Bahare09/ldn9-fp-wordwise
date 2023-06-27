@@ -5,7 +5,7 @@ const Output = ({ outputValue, onReset }) => {
 	return (
 		<div>
 			<textarea className="output-field" value={outputValue} readOnly />
-			<button onClick={onReset} className="submit-button">
+			<button onClick={onReset} className="back-button">
 				&#10149;
 			</button>
 		</div>
@@ -13,4 +13,3 @@ const Output = ({ outputValue, onReset }) => {
 };
 
 export default Output;
-
