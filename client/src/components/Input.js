@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./InputOutput.css";
+import TextToSpeechButton from "./TextToSpeechButton";
 
 const Input = ({ onSubmit }) => {
 	const [inputValue, setInputValue] = useState("");
@@ -23,7 +24,7 @@ const Input = ({ onSubmit }) => {
 			if (response.ok) {
 				const data = await response.json();
 				const correctedSentence = data;
-				onSubmit(correctedSentence);				
+				onSubmit(correctedSentence);
 			} else {
 				console.log("Error: " + response.status);
 			}
@@ -45,6 +46,7 @@ const Input = ({ onSubmit }) => {
 			<button type="submit" className="submit-button" onClick={handleSubmit}>
 				&#10148;
 			</button>
+			<TextToSpeechButton />
 		</div>
 	);
 };
