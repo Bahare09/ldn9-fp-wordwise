@@ -2,5 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #0306CE;
+}
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: #752575;
 }
