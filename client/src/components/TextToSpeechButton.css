@@ -1,0 +1,17 @@
+.text-to-speech-container {
+   border: solid red 2px;
+   display: flex;
+   justify-content: flex-end;
+}
+
+.text-to-speech-button {
+    background-color: rgb(255, 143, 162);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.text-to-speech-button:hover {
+    scale: 1.05;
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Input from "../components/Input";
 import Output from "../components/Output";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 import "./Home.css";
 import "../components/InputOutput.css";
 
