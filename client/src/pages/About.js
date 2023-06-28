@@ -2,16 +2,16 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "./Footer";
 import "./About.css";
+import bahare from "../images/bahare.jpg";
+import erin from "../images/erin.jpg";
+import hadi from "../images/hadi.jpg";
+import zahraa from "../images/zahraa.jpg";
+import lexi from "../images/lexi.jpg";
+import rob from "../images/rob.jpg";
+import dom from "../images/dom.jpg";
 
 const About = () => {
-	const elements = [
-		"Element1",
-		"Element2",
-		"Element3",
-		"Element4",
-		"Element5",
-		"Element6",
-	];
+	const images = [bahare, hadi, zahraa, lexi, erin, rob, dom];
 
 	return (
 		<main role="main" className="about-page">
@@ -27,10 +27,10 @@ const About = () => {
 					overall communication.
 				</p>
 				<div className="elements-container">
-					{elements.map((element, index) => (
+					{images.map((element, index) => (
 						<div key={index} className="element-box">
 							<div className="picture-container">
-								<p>{element}</p> pictures
+								<img src={element} alt={`element${index + 1}`} />
 							</div>
 							<div className="social-media-links">
 								<a href="#linkedin" target="_blank" rel="">
