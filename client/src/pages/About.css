@@ -32,3 +32,10 @@
 .social-media-links {
     margin-top: 10px;
 }
+
+/* responsive styles */
+@media screen and (max-width: 768px) {
+    .element-box {
+        flex: 1 0 30%;
+    }
+}
