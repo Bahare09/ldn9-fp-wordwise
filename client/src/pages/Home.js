@@ -31,7 +31,7 @@ const Home = () => {
 	return (
 		<main role="main">
 			<div>
-				<Header />
+				<Header currentPage="home" />
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
