@@ -10,7 +10,11 @@ const Input = ({ onSubmit }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
+		if (!inputValue || inputValue.trim() === "") {
+			// Show a warning message
+			alert("Input cannot be empty");
+			return;
+		}
 		try {
 			const response = await fetch("http://localhost:3000/api", {
 				method: "POST",
@@ -23,7 +27,7 @@ const Input = ({ onSubmit }) => {
 			if (response.ok) {
 				const data = await response.json();
 				const correctedSentence = data;
-				onSubmit(correctedSentence);				
+				onSubmit(correctedSentence);
 			} else {
 				console.log("Error: " + response.status);
 			}
