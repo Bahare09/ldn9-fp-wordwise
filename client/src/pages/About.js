@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import Footer from "./Footer";
 import "./About.css";
 import bahare from "../images/bahare.jpg";
 import erin from "../images/erin.jpg";
@@ -9,6 +8,8 @@ import zahraa from "../images/zahraa.jpg";
 import lexi from "../images/lexi.jpg";
 import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
+import Footer from "../components/Footer";
+
 
 const About = () => {
 	const images = [bahare, hadi, zahraa, lexi, erin, rob, dom];

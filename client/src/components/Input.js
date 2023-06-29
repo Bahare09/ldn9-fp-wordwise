@@ -11,7 +11,11 @@ const Input = ({ onSubmit }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
+		if (!inputValue || inputValue.trim() === "") {
+			// Show a warning message
+			alert("Input cannot be empty");
+			return;
+		}
 		try {
 			const response = await fetch("http://localhost:3000/api", {
 				method: "POST",
