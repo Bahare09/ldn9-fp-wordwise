@@ -12,6 +12,15 @@ import dom from "../images/dom.jpg";
 
 const About = () => {
 	const images = [bahare, hadi, zahraa, lexi, erin, rob, dom];
+	const descriptions = [
+		"Bahare - Developer",
+		"Hadi - Developer",
+		"Zahraa - Developer",
+		"Lexi - Developer",
+		"Erin - PO",
+		"Rob - PM",
+		"Dom - Tech Mentor",
+	];
 
 	return (
 		<div>
@@ -34,6 +43,7 @@ const About = () => {
 								<div className="picture-container">
 									<img src={element} alt={`element${index + 1}`} />
 								</div>
+								<p>{descriptions[index]}</p>
 								<div className="social-media-links">
 									<a href="#linkedin" target="_blank" rel="">
 										LinkedIn
