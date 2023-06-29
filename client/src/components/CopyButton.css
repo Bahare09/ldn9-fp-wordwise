@@ -1,0 +1,38 @@
+.copy-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px;
+	background-color: #a3b18a;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: background-color 0.3s;
+	position: absolute;
+	bottom: 29.7%;
+	left: 87%;
+}
+
+.copy-button:hover {
+	background-color: #93a07d;
+}
+
+.copy-button .copy-icon,
+.copy-button .copied-icon {
+	margin-right: 4px;
+}
+
+.copy-button .copied-icon {
+	display: none;
+	color: green;
+}
+
+.copy-button.copied .copy-icon {
+	display: none;
+}
+
+.copy-button.copied .copied-icon {
+	display: inline-block;
+}
