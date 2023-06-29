@@ -1,52 +1,65 @@
 import React from "react";
 import Header from "../components/Header";
+import "./About.css";
+import bahare from "../images/bahare.jpg";
+import erin from "../images/erin.jpg";
+import hadi from "../images/hadi.jpg";
+import zahraa from "../images/zahraa.jpg";
+import lexi from "../images/lexi.jpg";
+import rob from "../images/rob.jpg";
+import dom from "../images/dom.jpg";
 import Footer from "../components/Footer";
 
+
 const About = () => {
-	const elements = [
-		"Element1",
-		"Element2",
-		"Element3",
-		"Element4",
-		"Element5",
-		"Element6",
+	const images = [bahare, hadi, zahraa, lexi, erin, rob, dom];
+	const descriptions = [
+		"Bahare - Developer",
+		"Hadi - Developer",
+		"Zahraa - Developer",
+		"Lexi - Developer",
+		"Erin - PO",
+		"Rob - PM",
+		"Dom - Tech Mentor",
 	];
 
 	return (
-		<main role="main" className="about-page">
-			<div>
-				<Header currentPage="about" />
-			</div>
-			<div className="about-page">
-				<h2>About Us</h2>
-				<p>
-					WordWise is an innovative platform aimed at enhancing and enriching
-					your English skills. Our interactive tools and engaging content
-					provide an effective and fun way to learn new words and improve your
-					overall communication.
-				</p>
-				<div className="elements-container">
-					{elements.map((element, index) => (
-						<div key={index} className="element-box">
-							<div className="picture-container">
-								<p>{element}</p> pictures
+		<div>
+			<Header currentPage="about" />
+			<main role="main" className="about-page">
+				<div className="content">
+					<div className="intro-container">
+						<h2>About us</h2>
+						<p>
+							WordWise is an innovative platform aimed at enhancing and
+							enriching your English skills. Our interactive tools and engaging
+							content provide an effective and fun way to learn new words and
+							improve your overall communication.
+						</p>
+						<h3>Meet the team ⭐</h3>
+					</div>
+					<div className="elements-container">
+						{images.map((element, index) => (
+							<div key={index} className="element-box">
+								<div className="picture-container">
+									<img src={element} alt={`element${index + 1}`} />
+								</div>
+								<p>{descriptions[index]}</p>
+								<div className="social-media-links">
+									<a href="#linkedin" target="_blank" rel="">
+										LinkedIn
+									</a>
+									<a href="#github" target="_blank" rel="">
+										Github
+									</a>
+								</div>
 							</div>
-							<div className="social-media-links">
-								<a href="#linkedin" target="_blank" rel="">
-									LinkedIn
-								</a>
-								<a href="#github" target="_blank" rel="">
-									Github
-								</a>
-							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
-			</div>
-			<div>
-				<Footer />
-			</div>
-		</main>
+			</main>
+			<Footer />
+		</div>
 	);
 };
 
