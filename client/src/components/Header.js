@@ -13,12 +13,12 @@ const Header = ({ currentPage }) => {
 		currentPage === "home"
 			? [
 					<Link key="1" className="header-nav-link" to="/about">
-						About
+						About Us
 					</Link>,
 					<Link key="2" className="header-nav-link" to="/login">
 						Login
 					</Link>,
-			]
+			  ]
 			: [
 					<Link key="1" className="header-nav-link" to="/">
 						Home
@@ -26,11 +26,18 @@ const Header = ({ currentPage }) => {
 					<Link key="2" className="header-nav-link" to="/login">
 						Login
 					</Link>,
-			];
+			  ];
 
 	return (
 		<header className="header">
-			<h1 className="header-title">WordWise</h1>
+			<Link to="/">
+				<div className="logo-header">
+					<h1 className="header-title">
+						Word<span>Wise</span>
+					</h1>
+					{/* <hr /> */}
+				</div>
+			</Link>
 			<button
 				className={`hamburger-menu ${isOpen ? "open" : ""}`}
 				onClick={toggleMenu}

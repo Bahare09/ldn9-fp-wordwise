@@ -9,7 +9,9 @@ const Output = ({ outputValue, onReset }) => {
 			<button onClick={onReset} className="back-button">
 				&#10149;
 			</button>
-			<TextToSpeechButton />
+			<div className="text-to-speech-output">
+				<TextToSpeechButton />
+			</div>
 		</div>
 	);
 };

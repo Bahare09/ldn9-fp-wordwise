@@ -50,7 +50,9 @@ const Input = ({ onSubmit }) => {
 			<button type="submit" className="submit-button" onClick={handleSubmit}>
 				&#10148;
 			</button>
-			<TextToSpeechButton />
+			<div className="text-to-speech-input">
+				<TextToSpeechButton />
+			</div>
 		</div>
 	);
 };
