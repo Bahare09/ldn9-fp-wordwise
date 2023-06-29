@@ -12,6 +12,17 @@
     width: 100%;
     height: 100vh;
   }
+
+  .all-output-container {
+    height: 350px;
+  }
+
+  .volume-copy-container {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 36%;
+  }
   
   .input-field , 
   .output-field {
@@ -60,6 +71,36 @@
     right: 15px;
   }
 
+  /* ------------ Alternative Box ---------------------- */
+
+  .alternative-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .alternative-output {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+  }
+
+  .alternative-box {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: none;
+    height: 200px;
+    font-size: 15px;
+  }
+
+  .alternative-wrapper h3 {
+    padding-left: 30px;
+  }
+
   /* ------------ Responsive input & output ------------ */
 
   .input-output-wrapper {
@@ -92,8 +133,4 @@
   border-radius: 50%;
   height: 55px;
   width: 55px;
- } 
-
-
-  
-  
+ }
