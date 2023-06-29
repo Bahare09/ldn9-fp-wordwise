@@ -26,7 +26,7 @@ const About = () => {
 							content provide an effective and fun way to learn new words and
 							improve your overall communication.
 						</p>
-						<h3>Meet the team</h3>
+						<h3>Meet the team ⭐</h3>
 					</div>
 					<div className="elements-container">
 						{images.map((element, index) => (
