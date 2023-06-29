@@ -18,7 +18,7 @@ const Header = ({ currentPage }) => {
 					<Link key="2" className="header-nav-link" to="/login">
 						Login
 					</Link>,
-			  ]
+			]
 			: [
 					<Link key="1" className="header-nav-link" to="/">
 						Home
@@ -26,7 +26,7 @@ const Header = ({ currentPage }) => {
 					<Link key="2" className="header-nav-link" to="/login">
 						Login
 					</Link>,
-			  ];
+			];
 
 	return (
 		<header className="header">
