@@ -9,37 +9,47 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 
-//post corrections route
+// Post corrections route
 router.post("/", async (req, res) => {
-	const apiKey = process.env.OPEN_AI_SECRET_KEY;
-	const text = req.body.input; //taking the text data from inputbox
-	const configuration = new Configuration({
-		apiKey: apiKey,
-	});
-	const openai = new OpenAIApi(configuration);
+	try {
+		const apiKey = process.env.OPEN_AI_SECRET_KEY;
+		const text = req.body.input; //taking the text data from inputbox
+		const configuration = new Configuration({
+			apiKey: apiKey,
+		});
+		const openai = new OpenAIApi(configuration);
 
-	const completion = await openai.createChatCompletion({
-		model: "gpt-3.5-turbo",
-		messages: [
-			{
-				role: "user",
-				content: `
-				You are a copywriter. Your job is to take some user text and make it better.
-				- Improve the grammar
-				- Make it more engaging 
-				- Make it as concise as possible without sacrificing clarity
-				
-				The user typed the following:
-				
-				"${text}"
-				
-				Please re-write it, and make it better
-				`,
-			},
-		],
-	});
+		const completion = await openai.createChatCompletion({
+			model: "gpt-3.5-turbo",
+			messages: [
+				{
+					role: "user",
+					content: `
+					You are a copywriter. Your job is to take some user text and make it better.
+					- Improve the grammar
+					- Make it more engaging 
+					- Make it as concise as possible without sacrificing clarity
+					
+					The user typed the following:
+					
+					"${text}"
+					
+					Please re-write it, and make it better
+					`,
+				},
+			],
+		});
 
-	res.json(completion.data.choices[0].message.content);
+		if (completion.data.choices && completion.data.choices.length > 0) {
+			res.json(completion.data.choices[0].message.content);
+		} else {
+			res.status(404).json({ error: "No completion response received." });
+		}
+	} catch (error) {
+		res
+			.status(500)
+			.json({ error: "An error occurred while processing the request." });
+	}
 });
 
 export default router;
