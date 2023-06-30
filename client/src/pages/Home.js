@@ -35,12 +35,24 @@ const Home = () => {
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
-					<div className="input-output-wrapper">
-						<div className="input-container">
-							<Input onSubmit={handleSubmit} />
+					<div>
+						<div className="input-output-wrapper">
+							<div className="input-container">
+								<Input onSubmit={handleSubmit} />
+							</div>
+							<div className="output-container">
+								<Output outputValue={outputValue} onReset={handleReset} />
+							</div>
 						</div>
-						<div className="output-container">
-							<Output outputValue={outputValue} onReset={handleReset} />
+						<div className="alternative-container">
+							<div className="alternative-output">
+								<h3>Alternatives :</h3>
+								<textarea
+									className="alternative-box"
+									value={outputValue}
+									readOnly
+								/>
+							</div>
 						</div>
 					</div>
 				)}
@@ -51,7 +63,19 @@ const Home = () => {
 				)}
 				{isMobile && showOutput && (
 					<div>
-						<Output outputValue={outputValue} onReset={handleReset} />
+						<div>
+							<Output outputValue={outputValue} onReset={handleReset} />
+						</div>
+						<div className="alternative-container">
+							<div className="alternative-output">
+								<h3>Alternatives :</h3>
+								<textarea
+									className="alternative-box"
+									value={outputValue}
+									readOnly
+								/>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>
