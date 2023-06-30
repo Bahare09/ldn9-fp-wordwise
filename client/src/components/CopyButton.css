@@ -3,17 +3,20 @@
 	align-items: center;
 	justify-content: center;
 	padding: 6px;
-	background-color: #007bff;
+	background-color: #a3b18a;
 	color: #fff;
 	border: none;
 	cursor: pointer;
 	border-radius: 4px;
 	font-size: 14px;
 	transition: background-color 0.3s;
+	position: absolute;
+	bottom: 29.7%;
+	left: 87%;
 }
 
 .copy-button:hover {
-	background-color: #0056b3;
+	background-color: #93a07d;
 }
 
 .copy-button .copy-icon,
