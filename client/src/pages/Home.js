@@ -3,6 +3,7 @@ import Input from "../components/Input";
 import Output from "../components/Output";
 import "./Home.css";
 import "../components/InputOutput.css";
+import Header from "../components/Header";
 
 const Home = () => {
 	const [showOutput, setShowOutput] = useState(false);
@@ -28,6 +29,9 @@ const Home = () => {
 	};
 	return (
 		<main role="main">
+			<div>
+				<Header currentPage="home" />
+			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
 					<div className="input-output-wrapper">
