@@ -8,6 +8,7 @@ import zahraa from "../images/zahraa.jpg";
 import lexi from "../images/lexi.jpg";
 import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const About = () => {
 	const images = [bahare, hadi, zahraa, lexi, rob, dom, erin];
@@ -45,7 +46,7 @@ const About = () => {
 								<p>{descriptions[index]}</p>
 								<div className="social-media-links">
 									<a href="#linkedin" target="_blank" rel="">
-										LinkedIn
+										<LinkedInIcon />
 									</a>
 									<a href="#github" target="_blank" rel="">
 										Github
