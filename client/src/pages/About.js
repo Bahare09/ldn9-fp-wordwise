@@ -37,12 +37,30 @@ const About = () => {
 						<h3>Meet the team ⭐</h3>
 					</div>
 					<div className="elements-container">
-						{images.map((element, index) => (
+						{images.slice(0, 4).map((element, index) => (
 							<div key={index} className="element-box">
 								<div className="picture-container">
 									<img src={element} alt={`element${index + 1}`} />
 								</div>
 								<p>{descriptions[index]}</p>
+								<div className="social-media-links">
+									<a href="#linkedin" target="_blank" rel="">
+										LinkedIn
+									</a>
+									<a href="#github" target="_blank" rel="">
+										Github
+									</a>
+								</div>
+							</div>
+						))}
+					</div>
+					<div className="elements-container second-row">
+						{images.slice(4, 7).map((element, index) => (
+							<div key={index + 4} className="element-box">
+								<div className="picture-container">
+									<img src={element} alt={`element${index + 5}`} />
+								</div>
+								<p>{descriptions[index + 4]}</p>
 								<div className="social-media-links">
 									<a href="#linkedin" target="_blank" rel="">
 										LinkedIn

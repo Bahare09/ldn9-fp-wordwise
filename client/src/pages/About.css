@@ -29,9 +29,18 @@
 
 .elements-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 50px;
     justify-items: center;
+    margin-bottom: 20px;
+}
+
+.second-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 100px;
 }
 
 .element-box {
