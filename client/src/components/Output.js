@@ -1,6 +1,7 @@
 import React from "react";
 import "./InputOutput.css";
 import CopyButton from "./CopyButton.js";
+import TextToSpeechButton from "./TextToSpeechButton";
 
 const Output = ({ outputValue, onReset }) => {
 	return (
@@ -10,6 +11,9 @@ const Output = ({ outputValue, onReset }) => {
 			<button onClick={onReset} className="back-button">
 				&#10149;
 			</button>
+			<div className="text-to-speech-output">
+				<TextToSpeechButton />
+			</div>
 		</div>
 	);
 };

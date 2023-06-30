@@ -1,6 +1,6 @@
 import React from "react";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import "./TextToSpeechButton.css"
+import "./TextToSpeechButton.css";
 
 function TextToSpeechButton() {
   return (
