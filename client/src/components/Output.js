@@ -5,7 +5,6 @@ import TextToSpeechButton from "./TextToSpeechButton";
 
 const Output = ({ outputValue, onReset }) => {
 	return (
-		
 		<div>
 			<textarea className="output-field" value={outputValue} readOnly />
 			<CopyButton text={outputValue} />
@@ -13,7 +12,6 @@ const Output = ({ outputValue, onReset }) => {
 				&#10149;
 			</button>
 			<div className="text-to-speech-output">
-
 				<TextToSpeechButton />
 			</div>
 		</div>
