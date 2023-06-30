@@ -9,6 +9,7 @@ import lexi from "../images/lexi.jpg";
 import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const About = () => {
 	const images = [bahare, hadi, zahraa, lexi, rob, dom, erin];
@@ -49,7 +50,7 @@ const About = () => {
 										<LinkedInIcon />
 									</a>
 									<a href="#github" target="_blank" rel="">
-										Github
+										<GitHubIcon />
 									</a>
 								</div>
 							</div>
@@ -64,10 +65,10 @@ const About = () => {
 								<p>{descriptions[index + 4]}</p>
 								<div className="social-media-links">
 									<a href="#linkedin" target="_blank" rel="">
-										LinkedIn
+										<LinkedInIcon />
 									</a>
 									<a href="#github" target="_blank" rel="">
-										Github
+										<GitHubIcon />
 									</a>
 								</div>
 							</div>
