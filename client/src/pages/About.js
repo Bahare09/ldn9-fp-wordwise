@@ -8,7 +8,6 @@ import zahraa from "../images/zahraa.jpg";
 import lexi from "../images/lexi.jpg";
 import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
-import Footer from "../components/Footer";
 
 
 const About = () => {
@@ -58,7 +57,6 @@ const About = () => {
 					</div>
 				</div>
 			</main>
-			<Footer />
 		</div>
 	);
 };
