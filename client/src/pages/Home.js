@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
 import Input from "../components/Input";
 import Output from "../components/Output";
-import Footer from "../components/Footer";
 import "./Home.css";
 import "../components/InputOutput.css";
 
@@ -30,9 +28,6 @@ const Home = () => {
 	};
 	return (
 		<main role="main">
-			<div>
-				<Header currentPage="home" />
-			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
 					<div className="input-output-wrapper">
@@ -54,9 +49,6 @@ const Home = () => {
 						<Output outputValue={outputValue} onReset={handleReset} />
 					</div>
 				)}
-			</div>
-			<div>
-				<Footer />
 			</div>
 		</main>
 	);
