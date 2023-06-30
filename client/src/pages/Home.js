@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
 import Input from "../components/Input";
 import Output from "../components/Output";
-import Footer from "../components/Footer";
 import "./Home.css";
 import "../components/InputOutput.css";
+import Header from "../components/Header";
 
 const Home = () => {
 	const [showOutput, setShowOutput] = useState(false);
@@ -78,9 +77,6 @@ const Home = () => {
 						</div>
 					</div>
 				)}
-			</div>
-			<div>
-				<Footer />
 			</div>
 		</main>
 	);
