@@ -11,6 +11,7 @@ import dom from "../images/dom.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
+
 const ElementBox = ({ image, description, linkedin, github, index }) => (
 	<div key={index} className="element-box">
 		<div className="picture-container">
