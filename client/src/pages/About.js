@@ -8,19 +8,17 @@ import zahraa from "../images/zahraa.jpg";
 import lexi from "../images/lexi.jpg";
 import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
-import Footer from "../components/Footer";
-
 
 const About = () => {
-	const images = [bahare, hadi, zahraa, lexi, erin, rob, dom];
+	const images = [bahare, hadi, zahraa, lexi, rob, dom, erin];
 	const descriptions = [
 		"Bahare - Developer",
 		"Hadi - Developer",
 		"Zahraa - Developer",
 		"Lexi - Developer",
-		"Erin - PO",
 		"Rob - PM",
 		"Dom - Tech Mentor",
+		"Erin - PO",
 	];
 
 	return (
@@ -58,7 +56,6 @@ const About = () => {
 					</div>
 				</div>
 			</main>
-			<Footer />
 		</div>
 	);
 };
