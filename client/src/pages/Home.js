@@ -4,11 +4,14 @@ import Output from "../components/Output";
 import "./Home.css";
 import "../components/InputOutput.css";
 import Header from "../components/Header";
+import AlternativeButton from "../components/AlternativeButton";
 
 const Home = () => {
 	const [showOutput, setShowOutput] = useState(false);
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
+	const [alternativeValue, setAlternativeValue] = useState("");
+
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -48,8 +51,12 @@ const Home = () => {
 								<h3>Alternatives :</h3>
 								<textarea
 									className="alternative-box"
-									value={outputValue}
+									value={alternativeValue}
 									readOnly
+								/>
+								<AlternativeButton
+									outputValue={outputValue}
+									setAlternativeValue={setAlternativeValue}
 								/>
 							</div>
 						</div>
@@ -70,8 +77,12 @@ const Home = () => {
 								<h3>Alternatives :</h3>
 								<textarea
 									className="alternative-box"
-									value={outputValue}
+									value={alternativeValue}
 									readOnly
+								/>
+								<AlternativeButton
+									outputValue={outputValue}
+									setAlternativeValue={setAlternativeValue}
 								/>
 							</div>
 						</div>
