@@ -1,4 +1,5 @@
 import React from "react";
+import "./AlternativeButton.css";
 
 const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
 	const getAlternatives = async () => {
@@ -21,7 +22,7 @@ const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
 
 	return (
 		<button onClick={getAlternatives} className="alternative-button">
-			Get Alternatives
+			Get Alternatives:
 		</button>
 	);
 };
