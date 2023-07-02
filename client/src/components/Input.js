@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./InputOutput.css";
-import TextToSpeechButton from "./TextToSpeechButton";
 
 const Input = ({ onSubmit }) => {
 	const [inputValue, setInputValue] = useState("");
@@ -50,9 +49,7 @@ const Input = ({ onSubmit }) => {
 			<button type="submit" className="submit-button" onClick={handleSubmit}>
 				&#10148;
 			</button>
-			<div className="text-to-speech-input">
-				<TextToSpeechButton />
-			</div>
+			<div className="text-to-speech-input"></div>
 		</div>
 	);
 };
