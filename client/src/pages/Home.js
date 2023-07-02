@@ -79,7 +79,13 @@ const Home = () => {
 						</div>
 						<div className="alternative-container">
 							<div className="alternative-output">
-								<h3>Alternatives :</h3>
+								<AlternativeButton
+									outputValue={outputValue}
+									setAlternativeValue={setAlternativeValue}
+								/>
+								<button onClick={handleReset} className="reset-button">
+									Reset
+								</button>
 								<textarea
 									className="alternative-box"
 									value={alternativeValue}
@@ -89,6 +95,9 @@ const Home = () => {
 									outputValue={outputValue}
 									setAlternativeValue={setAlternativeValue}
 								/>
+								<button onClick={handleReset} className="reset-button">
+									Reset
+								</button>
 							</div>
 						</div>
 					</div>
