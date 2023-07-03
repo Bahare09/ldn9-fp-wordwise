@@ -68,7 +68,7 @@ router.post("/alternatives", async (req, res) => {
 				{
 					role: "user",
 					content: `
-					You are a copywriter. Your job is to take some user text and make it better.
+					You are a copywriter. Your job is to take some user text and offer alternative ways of phrasing it.
 					- Improve the grammar
 					- Make it more engaging 
 					- Make it as concise as possible without sacrificing clarity
