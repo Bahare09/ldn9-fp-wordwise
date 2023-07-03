@@ -30,6 +30,29 @@ const Home = () => {
 		setShowOutput(false);
 		setOutputValue("");
 	};
+	const renderAlternatives = () => {
+		if (outputValue) {
+			return (
+				<div className="alternative-container">
+					<div className="alternative-output">
+						<div>
+							<AlternativeButton
+								outputValue={outputValue}
+								setAlternativeValue={setAlternativeValue}
+							/>
+						</div>
+						<textarea
+							className="alternative-box"
+							value={alternativeValue}
+							readOnly
+						/>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<main role="main">
 			<div>
@@ -46,21 +69,7 @@ const Home = () => {
 								<Output outputValue={outputValue} onReset={handleReset} />
 							</div>
 						</div>
-						<div className="alternative-container">
-							<div className="alternative-output">
-								<div>
-									<AlternativeButton
-										outputValue={outputValue}
-										setAlternativeValue={setAlternativeValue}
-									/>
-								</div>
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									readOnly
-								/>
-							</div>
-						</div>
+						<div>{renderAlternatives()}</div>
 					</div>
 				)}
 				{isMobile && !showOutput && (
@@ -73,19 +82,7 @@ const Home = () => {
 						<div>
 							<Output outputValue={outputValue} onReset={handleReset} />
 						</div>
-						<div className="alternative-container">
-							<div className="alternative-output">
-								<AlternativeButton
-									outputValue={outputValue}
-									setAlternativeValue={setAlternativeValue}
-								/>
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									readOnly
-								/>
-							</div>
-						</div>
+						{renderAlternatives()}
 					</div>
 				)}
 			</div>
