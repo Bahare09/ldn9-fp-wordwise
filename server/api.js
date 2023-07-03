@@ -10,7 +10,7 @@ router.get("/", (_, res) => {
 });
 
 // Post corrections route
-router.post("/", async (req, res) => {
+router.post("/correction", async (req, res) => {
 	try {
 		const apiKey = process.env.OPEN_AI_SECRET_KEY;
 		const text = req.body.input; //taking the text data from inputbox
