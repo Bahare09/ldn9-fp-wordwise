@@ -4,7 +4,7 @@ import "./AlternativeButton.css";
 const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
 	const getAlternatives = async () => {
 		try {
-			const response = await fetch("http://localhost:3000/api/alternatives", {
+			const response = await fetch("/api/alternatives", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ input: outputValue }),
