@@ -91,13 +91,6 @@ const Home = () => {
 									value={alternativeValue}
 									readOnly
 								/>
-								<AlternativeButton
-									outputValue={outputValue}
-									setAlternativeValue={setAlternativeValue}
-								/>
-								<button onClick={handleReset} className="reset-button">
-									Reset
-								</button>
 							</div>
 						</div>
 					</div>
