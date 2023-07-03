@@ -29,7 +29,6 @@ const Home = () => {
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
-		setAlternativeValue("");
 	};
 	return (
 		<main role="main">
@@ -54,9 +53,6 @@ const Home = () => {
 										outputValue={outputValue}
 										setAlternativeValue={setAlternativeValue}
 									/>
-									<button onClick={handleReset} className="reset-button">
-										Reset
-									</button>
 								</div>
 								<textarea
 									className="alternative-box"
@@ -83,9 +79,6 @@ const Home = () => {
 									outputValue={outputValue}
 									setAlternativeValue={setAlternativeValue}
 								/>
-								<button onClick={handleReset} className="reset-button">
-									Reset
-								</button>
 								<textarea
 									className="alternative-box"
 									value={alternativeValue}
