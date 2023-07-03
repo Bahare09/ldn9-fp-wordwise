@@ -16,7 +16,7 @@ const Input = ({ onSubmit }) => {
 			return;
 		}
 		try {
-			const response = await fetch("http://localhost:3000/api/corrections", {
+			const response = await fetch("/api/correction", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
