@@ -1,33 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton.js";
 import "./Header.css";
-
 const Header = ({ currentPage }) => {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleMenu = () => {
-		setIsOpen(!isOpen);
-	};
-
+	const { isAuthenticated, user } = useAuth0();
 	const navLinks =
 		currentPage === "home"
 			? [
 					<Link key="1" className="header-nav-link" to="/about">
 						About Us
 					</Link>,
-					<Link key="2" className="header-nav-link" to="/login">
-						Login
-					</Link>,
-			]
+			  ]
 			: [
 					<Link key="1" className="header-nav-link" to="/">
 						Home
 					</Link>,
-					<Link key="2" className="header-nav-link" to="/login">
-						Login
-					</Link>,
-			];
-
+			  ];
 	return (
 		<header className="header">
 			<Link to="/">
@@ -35,21 +25,20 @@ const Header = ({ currentPage }) => {
 					<h1 className="header-title">
 						Word<span>Wise</span>
 					</h1>
-					{/* <hr /> */}
 				</div>
 			</Link>
-			<button
-				className={`hamburger-menu ${isOpen ? "open" : ""}`}
-				onClick={toggleMenu}
-				aria-label="Toggle Menu"
-			>
-				<div></div>
-				<div></div>
-				<div></div>
-			</button>
-			<nav className={`header-nav ${isOpen ? "open" : " "}`}>{navLinks}</nav>
+			<nav className="header-nav">
+				{navLinks}
+				{isAuthenticated ? (
+					<div className="header-auth">
+						<span className="header-welcome"> {user.name}</span>
+						<LogoutButton />
+					</div>
+				) : (
+					<LoginButton />
+				)}
+			</nav>
 		</header>
 	);
 };
-
 export default Header;
