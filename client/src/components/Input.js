@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./InputOutput.css";
 
-const Input = ({ onSubmit }) => {
-	const [inputValue, setInputValue] = useState("");
-
+const Input = ({ inputValue, setInputValue, onSubmit }) => {
 	const handleInputChange = (e) => {
 		setInputValue(e.target.value);
 	};
@@ -43,7 +41,7 @@ const Input = ({ onSubmit }) => {
 			<textarea
 				value={inputValue}
 				onChange={handleInputChange}
-				placeholder="Enter something..."
+				placeholder="Write your text here for corrected and alternative suggestions..."
 				className="input-field"
 			/>
 			<button type="submit" className="submit-button" onClick={handleSubmit}>
