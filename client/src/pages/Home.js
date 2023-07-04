@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import AlternativeButton from "../components/AlternativeButton";
 
 const Home = () => {
+	const [inputValue, setInputValue] = useState("");
 	const [showOutput, setShowOutput] = useState(false);
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
@@ -29,6 +30,8 @@ const Home = () => {
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
+		setAlternativeValue("");
+		setInputValue("");
 	};
 	const renderAlternatives = () => {
 		if (outputValue) {
@@ -40,6 +43,9 @@ const Home = () => {
 								outputValue={outputValue}
 								setAlternativeValue={setAlternativeValue}
 							/>
+							<button onClick={handleReset} className="reset-button">
+								Reset
+							</button>
 						</div>
 						<textarea
 							className="alternative-box"
@@ -63,7 +69,11 @@ const Home = () => {
 					<div>
 						<div className="input-output-wrapper">
 							<div className="input-container">
-								<Input onSubmit={handleSubmit} />
+								<Input
+									inputValue={inputValue}
+									setInputValue={setInputValue}
+									onSubmit={handleSubmit}
+								/>
 							</div>
 							<div className="output-container">
 								<Output outputValue={outputValue} onReset={handleReset} />
@@ -74,7 +84,11 @@ const Home = () => {
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
-						<Input onSubmit={handleSubmit} />
+						<Input
+							inputValue={inputValue}
+							setInputValue={setInputValue}
+							onSubmit={handleSubmit}
+						/>
 					</div>
 				)}
 				{isMobile && showOutput && (
