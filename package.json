@@ -71,6 +71,7 @@
 		"webpack-merge": "^5.8.0"
 	},
 	"dependencies": {
+		"@auth0/auth0-react": "^2.1.1",
 		"@babel/runtime": "^7.21.5",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
