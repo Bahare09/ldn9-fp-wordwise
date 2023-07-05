@@ -4,11 +4,15 @@ import Output from "../components/Output";
 import "./Home.css";
 import "../components/InputOutput.css";
 import Header from "../components/Header";
+import AlternativeButton from "../components/AlternativeButton";
 
 const Home = () => {
+	const [inputValue, setInputValue] = useState("");
 	const [showOutput, setShowOutput] = useState(false);
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
+	const [alternativeValue, setAlternativeValue] = useState("");
+
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -26,7 +30,35 @@ const Home = () => {
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
+		setAlternativeValue("");
+		setInputValue("");
 	};
+	const renderAlternatives = () => {
+		if (outputValue) {
+			return (
+				<div className="alternative-container">
+					<div className="alternative-output">
+						<div>
+							<AlternativeButton
+								outputValue={outputValue}
+								setAlternativeValue={setAlternativeValue}
+							/>
+							<button onClick={handleReset} className="reset-button">
+								Reset
+							</button>
+						</div>
+						<textarea
+							className="alternative-box"
+							value={alternativeValue}
+							readOnly
+						/>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<main role="main">
 			<div>
@@ -37,27 +69,26 @@ const Home = () => {
 					<div>
 						<div className="input-output-wrapper">
 							<div className="input-container">
-								<Input onSubmit={handleSubmit} />
+								<Input
+									inputValue={inputValue}
+									setInputValue={setInputValue}
+									onSubmit={handleSubmit}
+								/>
 							</div>
 							<div className="output-container">
 								<Output outputValue={outputValue} onReset={handleReset} />
 							</div>
 						</div>
-						<div className="alternative-container">
-							<div className="alternative-output">
-								<h3>Alternatives :</h3>
-								<textarea
-									className="alternative-box"
-									value={outputValue}
-									readOnly
-								/>
-							</div>
-						</div>
+						<div>{renderAlternatives()}</div>
 					</div>
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
-						<Input onSubmit={handleSubmit} />
+						<Input
+							inputValue={inputValue}
+							setInputValue={setInputValue}
+							onSubmit={handleSubmit}
+						/>
 					</div>
 				)}
 				{isMobile && showOutput && (
@@ -65,16 +96,7 @@ const Home = () => {
 						<div>
 							<Output outputValue={outputValue} onReset={handleReset} />
 						</div>
-						<div className="alternative-container">
-							<div className="alternative-output">
-								<h3>Alternatives :</h3>
-								<textarea
-									className="alternative-box"
-									value={outputValue}
-									readOnly
-								/>
-							</div>
-						</div>
+						{renderAlternatives()}
 					</div>
 				)}
 			</div>
