@@ -4,7 +4,7 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const TextToSpeech = ({ outputValue, alternativeValue }) => {
 	const text = alternativeValue ? alternativeValue : outputValue;
-	const [volume, setVolume] = useState(0.5); // Initial volume set to 0.5 (50% volume)
+	const [volume, setVolume] = useState(1); // Initial volume set to 1
 
 	const handleVolumeChange = (event) => {
 		const newVolume = parseFloat(event.target.value);
