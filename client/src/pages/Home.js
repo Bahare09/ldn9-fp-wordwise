@@ -59,7 +59,7 @@ const Home = () => {
 								/>
 							</div>
 							<div className="CopyButton-div">
-								<CopyButton text={outputValue} />
+								<CopyButton text={alternativeValue} />
 							</div>
 						</div>
 					</div>
