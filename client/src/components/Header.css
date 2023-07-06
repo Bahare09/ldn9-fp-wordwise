@@ -3,8 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: white;
-    box-shadow: 2px 2px 15px rgb(178, 177, 177);
+    background-color: #ffffff;
+    box-shadow: 2px 2px 15px #b2b1b1;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -46,6 +46,7 @@
     text-decoration: none;
     color: #333;
     padding: 10px 7px;
+    border: #333 1px solid;
 }
 
 .header-nav-link:hover {
@@ -62,6 +63,7 @@
     color: #333;
     text-decoration: none;
     cursor: pointer;
+    border: #fc0505 1px solid;
 }
 .Login-container button:hover {
     border-left: #a3b18a 3px solid;

@@ -13,11 +13,11 @@ const Header = ({ currentPage }) => {
 		setIsOpen(!isOpen);
 	};
 
-	const navLinks =
+	let navLinks =
 		currentPage === "home"
 			? [
 					<Link key="1" className="header-nav-link" to="/about">
-						About Us
+						About
 					</Link>,
 			]
 			: [
@@ -25,6 +25,17 @@ const Header = ({ currentPage }) => {
 						Home
 					</Link>,
 			];
+
+	if (isAuthenticated) {
+		navLinks.push(
+			<div key="2" className="header-auth">
+				<span className="header-welcome"> {user.name}</span>
+				<LogoutButton />
+			</div>
+		);
+	} else {
+		navLinks.push(<LoginButton key="2" />);
+	}
 
 	return (
 		<header className="header">
@@ -47,14 +58,6 @@ const Header = ({ currentPage }) => {
 			<nav className={`header-nav ${isOpen ? "open" : ""}`}>
 				<div className={`header-nav-container ${isOpen ? "open" : ""}`}>
 					{navLinks}
-					{isAuthenticated ? (
-						<div className="header-auth">
-							<span className="header-welcome"> {user.name}</span>
-							<LogoutButton />
-						</div>
-					) : (
-						<LoginButton />
-					)}
 				</div>
 			</nav>
 		</header>
