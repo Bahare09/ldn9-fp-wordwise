@@ -99,6 +99,7 @@
     padding: 0;
     box-sizing: border-box;
     position: relative;
+    z-index: 101;
 }
 
 .hamburger-menu div {
@@ -118,7 +119,7 @@
     content: "";
     height: 0.25rem;
     width: 2rem;
-    background-color: #818181;
+    background-color: #ffffff;
     top: 0;
     right: 0;
 }
