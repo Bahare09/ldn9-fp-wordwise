@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import AlternativeButton from "../components/AlternativeButton";
 import CopyButton from "../components/CopyButton";
 import Footer from "../components/Footer";
-
+import TextToSpeech from "../components/TextToSpeech";
 
 const Home = () => {
 	const [inputValue, setInputValue] = useState("");
@@ -60,6 +60,7 @@ const Home = () => {
 							</div>
 							<div className="CopyButton-div">
 								<CopyButton text={alternativeValue} />
+								<TextToSpeech outputValue={alternativeValue} />
 							</div>
 						</div>
 					</div>
