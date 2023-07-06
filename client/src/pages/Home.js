@@ -60,12 +60,10 @@ const Home = () => {
 							</div>
 							<div className="CopyButton-div">
 								<CopyButton
-									text={outputValue}
-									alternativeValue={alternativeValue}
+																		alternativeValue={alternativeValue}
 								/>
 								<TextToSpeech
-									outputValue={outputValue}
-									alternativeValue={alternativeValue}
+																		alternativeValue={alternativeValue}
 								/>
 							</div>
 						</div>
