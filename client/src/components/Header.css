@@ -142,7 +142,15 @@
         justify-content: center;
         align-items: center;
     }
-
+    .header-nav-link {
+        font-size:xx-large;
+        font-weight: 700;
+        }
+    .Login-container button {
+        font-size:xx-large;
+        font-weight: 700;
+        margin-top: 50px;
+    }
     .hamburger-menu {
         display: flex;
     }
