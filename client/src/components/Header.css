@@ -54,6 +54,12 @@
     padding: 10px 7px;
 }
 
+.header-nav-link,
+.Login-container button {
+    box-sizing: border-box;
+    padding: 10px; 
+    line-height: 1.5;
+}
 .header-nav-link:hover {
     border-left:  #a3b18a 3px solid;
     border-right: #a3b18a 3px solid;
@@ -159,5 +165,8 @@
     }
     .hamburger-menu {
         display: flex;
+    }
+    .header-nav-container {
+        flex-direction: column;
     }
 }
