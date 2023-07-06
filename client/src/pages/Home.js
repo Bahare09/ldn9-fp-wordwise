@@ -5,6 +5,7 @@ import "./Home.css";
 import "../components/InputOutput.css";
 import Header from "../components/Header";
 import AlternativeButton from "../components/AlternativeButton";
+import CopyButton from "../components/CopyButton";
 
 const Home = () => {
 	const [inputValue, setInputValue] = useState("");
@@ -47,11 +48,18 @@ const Home = () => {
 								Reset
 							</button>
 						</div>
-						<textarea
-							className="alternative-box"
-							value={alternativeValue}
-							readOnly
-						/>
+						<div className="alternative-wrap">
+							<div className="alternative-div">
+								<textarea
+									className="alternative-box"
+									value={alternativeValue}
+									readOnly
+								/>
+							</div>
+							<div className="CopyButton-div">
+								<CopyButton text={outputValue} />
+							</div>
+						</div>
 					</div>
 				</div>
 			);
