@@ -10,6 +10,12 @@
     z-index: 100;
     min-height: 50px;
 }
+.header-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .header-title {
     font-size: 24px;
@@ -46,7 +52,6 @@
     text-decoration: none;
     color: #333;
     padding: 10px 7px;
-    border: #333 1px solid;
 }
 
 .header-nav-link:hover {
@@ -57,13 +62,12 @@
 .Login-container button {
     border: none;
     background: none;
-    padding: 0;
+    padding-left: 15px;
     margin: 0;
     font-size: inherit;
     color: #333;
     text-decoration: none;
     cursor: pointer;
-    border: #fc0505 1px solid;
 }
 .Login-container button:hover {
     border-left: #a3b18a 3px solid;
