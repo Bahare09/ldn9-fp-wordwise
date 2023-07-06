@@ -6,30 +6,41 @@
 	padding: 0;
 }
 
+.input-output-wrapper {
+	display: flex;
+	width: 100%;
+	/* min-height: 65vh; */
+}
+
 .input-container {
+	background-color: #d7dcce;
+}
+
+.input-wrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 60vh;
+	height: 100%;
+	background-color: #d7dcce;
 }
 
-.all-output-container {
-	height: 350px;
+.output-container {
+	height: 100%;
 }
-/* 
-  .volume-copy-container {
-    display: flex;
-    position: absolute;
-    right: 10px;
-    top: 36%;
-  } */
+
+.output-wrapper {
+	background-color: #d7dcce;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 
 .input-field,
 .output-field {
 	display: flex;
-	padding: 30px;
+	padding: 40px;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	border: none;
 	font-size: 16px;
 }
@@ -84,6 +95,14 @@
 	font-size: 30px;
 }
 
+.output-mini-buttons-container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+	padding: 15px;
+}
+
 /* ------------ Alternative Box ---------------------- */
 
 .alternative-container {
@@ -116,21 +135,12 @@
 
 /* ------------ Responsive input & output ------------ */
 
-.input-output-wrapper {
-	display: flex;
-	width: 100%;
-	/* gap: 5px; */
-	/* margin-top: 40px; */
-	/* margin-left: 20px; */
-	min-height: 65vh;
-}
-
 .input-output-wrapper > .input-container,
 .output-container {
 	width: 50%;
 }
 
-.input-output-wrapper .input-container {
+.input-output-wrapper {
 	height: 64.5vh;
 }
 
