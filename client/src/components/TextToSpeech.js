@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./TextToSpeech.css";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const TextToSpeech = ({ outputValue }) => {
 	const text = outputValue;
@@ -17,15 +19,17 @@ const TextToSpeech = ({ outputValue }) => {
 
 	return (
 		<div className="speech-container">
-			<input
+			{/* <input
 				type="range"
 				min="0"
 				max="1"
 				step="0.01"
 				value={volume}
 				onChange={handleVolumeChange}
-			/>
-			<button onClick={handleSpeech}>Speak</button>
+			/> */}
+			<button className="text-to-speech-button" onClick={handleSpeech}>
+				<VolumeUpIcon />{" "}
+			</button>
 		</div>
 	);
 };

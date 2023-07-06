@@ -26,12 +26,10 @@ const CopyButton = ({ text }) => {
 			{copied ? (
 				<>
 					<FiCheck size={18} />
-					Copied!
 				</>
 			) : (
 				<>
 					<FiCopy size={18} />
-					Copy
 				</>
 			)}
 		</button>

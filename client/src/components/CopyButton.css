@@ -2,7 +2,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 6px;
 	background-color: #a3b18a;
 	color: #fff;
 	border: none;
@@ -10,9 +9,8 @@
 	border-radius: 4px;
 	font-size: 14px;
 	transition: background-color 0.3s;
-	position: absolute;
-	bottom: 29.7%;
-	left: 87%;
+	width: 35px;
+    height: 35px;
 }
 
 .copy-button:hover {

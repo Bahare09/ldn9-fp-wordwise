@@ -5,14 +5,15 @@ import TextToSpeech from "./TextToSpeech";
 
 const Output = ({ outputValue, onReset }) => {
 	return (
-		<div>
+		<div className="output-wrapper">
 			<textarea className="output-field" value={outputValue} readOnly />
-			<CopyButton text={outputValue} />
 			<button onClick={onReset} className="back-button">
 				&#10149;
 			</button>
-
-			<TextToSpeech outputValue={outputValue} />
+			<div className="output-mini-buttons-container">
+				<CopyButton text={outputValue} />
+				<TextToSpeech outputValue={outputValue} />
+			</div>
 		</div>
 	);
 };
