@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { FiCopy, FiCheck } from "react-icons/fi";
 import "./CopyButton.css";
 
-const CopyButton = ({ text }) => {
+const CopyButton = ({ text, alternativeValue }) => {
 	const [copied, setCopied] = useState(false);
 
 	const handleCopyToClipboard = async () => {
 		try {
-			await navigator.clipboard.writeText(text);
+			const content = alternativeValue ? alternativeValue : text;
+			await navigator.clipboard.writeText(content);
 			setCopied(true);
 
 			setTimeout(() => {

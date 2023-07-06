@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./TextToSpeech.css";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
-const TextToSpeech = ({ outputValue }) => {
-	const text = outputValue;
+const TextToSpeech = ({ outputValue, alternativeValue }) => {
+	const text = alternativeValue ? alternativeValue : outputValue;
 	const [volume, setVolume] = useState(0.5); // Initial volume set to 0.5 (50% volume)
 
 	const handleVolumeChange = (event) => {
