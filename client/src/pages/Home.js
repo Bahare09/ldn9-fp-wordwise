@@ -59,12 +59,8 @@ const Home = () => {
 								/>
 							</div>
 							<div className="CopyButton-div">
-								<CopyButton
-																		alternativeValue={alternativeValue}
-								/>
-								<TextToSpeech
-																		alternativeValue={alternativeValue}
-								/>
+								<CopyButton text={alternativeValue} />
+								<TextToSpeech outputValue={alternativeValue} />
 							</div>
 						</div>
 					</div>
