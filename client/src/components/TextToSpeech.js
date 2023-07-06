@@ -1,37 +1,31 @@
-import React, { useState } from "react";
-import "./TextToSpeech.css";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import React from "react";
+import "./AlternativeButton.css";
 
-const TextToSpeech = ({ outputValue, alternativeValue }) => {
-	const text = alternativeValue ? alternativeValue : outputValue;
-	const [volume, setVolume] = useState(1); // Initial volume set to 1
-
-	const handleVolumeChange = (event) => {
-		const newVolume = parseFloat(event.target.value);
-		setVolume(newVolume);
-	};
-
-	const handleSpeech = () => {
-		const speech = new SpeechSynthesisUtterance(text);
-		speech.volume = volume; // Set the volume
-		window.speechSynthesis.speak(speech);
+const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
+	const getAlternatives = async () => {
+		try {
+			const response = await fetch("/api/alternatives", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ input: outputValue }),
+			});
+			if (response.ok) {
+				const alternative = await response.json();
+				setAlternativeValue(alternative);
+			} else {
+				console.log("Error: " + response.status);
+			}
+		} catch (error) {
+			console.error("Failed to fetch alternatives:", error);
+		}
 	};
 
 	return (
-		<div className="speech-container">
-			{/* <input
-				type="range"
-				min="0"
-				max="1"
-				step="0.01"
-				value={volume}
-				onChange={handleVolumeChange}
-			/> */}
-			<button className="text-to-speech-button" onClick={handleSpeech}>
-				<VolumeUpIcon />{" "}
-			</button>
-		</div>
+		<button onClick={getAlternatives} className="alternative-button">
+			Get Alternatives:
+		</button>
 	);
 };
 
-export default TextToSpeech;
+export default AlternativeButton;
+
