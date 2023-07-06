@@ -151,6 +151,25 @@
 	padding: 0 15px 15px 0; 
 }
 
+.alternative-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.alternative-div {
+	display: flex;
+	width: 100%;
+}
+
+.CopyButton-div {
+	display: flex;
+	background-color: #d7dcce;
+	margin-top: 0;
+	justify-content: end;
+	padding: 0 15px 15px 0; 
+}
+
 .alternative-wrapper h3 {
 	padding-left: 30px;
 }
