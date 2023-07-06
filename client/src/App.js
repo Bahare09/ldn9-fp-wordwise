@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 const domain = "dev-qbv6qxok2fldwc4q.us.auth0.com";
