@@ -19,12 +19,12 @@ const Header = ({ currentPage }) => {
 					<Link key="1" className="header-nav-link" to="/about">
 						About Us
 					</Link>,
-			  ]
+			]
 			: [
 					<Link key="1" className="header-nav-link" to="/">
 						Home
 					</Link>,
-			  ];
+			];
 
 	return (
 		<header className="header">
