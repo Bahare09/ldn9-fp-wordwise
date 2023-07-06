@@ -37,7 +37,7 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 	};
 
 	return (
-		<div className="input-container">
+		<div className="input-wrapper">
 			<textarea
 				value={inputValue}
 				onChange={handleInputChange}
@@ -47,7 +47,6 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 			<button type="submit" className="submit-button" onClick={handleSubmit}>
 				&#10148;
 			</button>
-			<div className="text-to-speech-input"></div>
 		</div>
 	);
 };

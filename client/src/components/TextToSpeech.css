@@ -1,0 +1,35 @@
+.text-to-speech-button {
+    background-color: #a3b18a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 4px;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.text-to-speech-button:hover {
+	background-color: #93a07d;
+}
+
+.text-to-speech-button .copy-icon,
+.text-to-speech-button .copied-icon {
+	margin-right: 4px;
+}
+
+.text-to-speech-button .copied-icon {
+	display: none;
+	color: green;
+}
+
+.text-to-speech-button.copied .copy-icon {
+	display: none;
+}
+
+.text-to-speech-button.copied .copied-icon {
+	display: inline-block;
+}
