@@ -156,6 +156,10 @@
         align-items: center;
         transition: transform 0.3s ease-out;
     }
+    .header-nav.open {
+        transform: translateX(0);
+        background: rgba(163, 177, 138, 0.9)
+    }
     .header-nav-link {
         font-size:xx-large;
         font-weight: 700;
