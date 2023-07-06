@@ -52,11 +52,13 @@
 
 .input-field {
 	background-color: #f8faf4;
+	resize: none;
 }
 
 .output-field {
 	height: 64.5vh;
 	background-color: #d7dcce;
+	resize: none;
 }
 
 .submit-button {
@@ -127,6 +129,7 @@
 	border: none;
 	height: 200px;
 	font-size: 15px;
+	resize: none;
 }
 
 .alternative-wrap {
