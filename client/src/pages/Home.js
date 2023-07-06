@@ -5,6 +5,9 @@ import "./Home.css";
 import "../components/InputOutput.css";
 import Header from "../components/Header";
 import AlternativeButton from "../components/AlternativeButton";
+import CopyButton from "../components/CopyButton";
+import Footer from "../components/Footer";
+import TextToSpeech from "../components/TextToSpeech";
 
 const Home = () => {
 	const [inputValue, setInputValue] = useState("");
@@ -47,11 +50,19 @@ const Home = () => {
 								Reset
 							</button>
 						</div>
-						<textarea
-							className="alternative-box"
-							value={alternativeValue}
-							readOnly
-						/>
+						<div className="alternative-wrap">
+							<div className="alternative-div">
+								<textarea
+									className="alternative-box"
+									value={alternativeValue}
+									readOnly
+								/>
+							</div>
+							<div className="CopyButton-div">
+								<CopyButton text={alternativeValue} />
+								<TextToSpeech outputValue={alternativeValue} />
+							</div>
+						</div>
 					</div>
 				</div>
 			);
@@ -67,19 +78,24 @@ const Home = () => {
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
 					<div>
-						<div className="input-output-wrapper">
-							<div className="input-container">
-								<Input
-									inputValue={inputValue}
-									setInputValue={setInputValue}
-									onSubmit={handleSubmit}
-								/>
+						<div>
+							<div className="input-output-wrapper">
+								<div className="input-container">
+									<Input
+										inputValue={inputValue}
+										setInputValue={setInputValue}
+										onSubmit={handleSubmit}
+									/>
+								</div>
+								<div className="output-container">
+									<Output outputValue={outputValue} onReset={handleReset} />
+								</div>
 							</div>
-							<div className="output-container">
-								<Output outputValue={outputValue} onReset={handleReset} />
-							</div>
+							<div>{renderAlternatives()}</div>
 						</div>
-						<div>{renderAlternatives()}</div>
+						<div>
+							<Footer />
+						</div>
 					</div>
 				)}
 				{isMobile && !showOutput && (
