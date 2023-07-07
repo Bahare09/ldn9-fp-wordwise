@@ -27,9 +27,11 @@ const Home = () => {
 		};
 	}, []);
 
-	const onOutputValueChange = (event) => {
-		setOutputValue(event.target.value);
+	const handleChange = (setter) => (event) => {
+		setter(event.target.value);
 	};
+	const onOutputValueChange = handleChange(setOutputValue);
+	const onAlternativeValueChange = handleChange(setAlternativeValue);
 
 	const handleSubmit = (data) => {
 		setOutputValue(data);
@@ -60,6 +62,7 @@ const Home = () => {
 								<textarea
 									className="alternative-box"
 									value={alternativeValue}
+									onChange={onAlternativeValueChange}
 								/>
 							</div>
 							<div className="CopyButton-div">
@@ -92,7 +95,11 @@ const Home = () => {
 									/>
 								</div>
 								<div className="output-container">
-									<Output outputValue={outputValue} onReset={handleReset} onOutputValueChange={onOutputValueChange} />
+									<Output
+										outputValue={outputValue}
+										onReset={handleReset}
+										onOutputValueChange={onOutputValueChange}
+									/>
 								</div>
 							</div>
 							<div>{renderAlternatives()}</div>
