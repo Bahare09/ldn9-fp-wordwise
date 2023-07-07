@@ -15,6 +15,7 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
+	const [showAlternatives, setShowAlternatives] = useState(false);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -42,6 +43,7 @@ const Home = () => {
 		setOutputValue("");
 		setAlternativeValue("");
 		setInputValue("");
+		setShowAlternatives(false);
 	};
 	const renderAlternatives = () => {
 		if (outputValue) {
@@ -52,24 +54,27 @@ const Home = () => {
 							<AlternativeButton
 								outputValue={outputValue}
 								setAlternativeValue={setAlternativeValue}
+								setShowAlternatives={setShowAlternatives}
 							/>
 							<button onClick={handleReset} className="reset-button">
 								Reset
 							</button>
 						</div>
-						<div className="alternative-wrap">
-							<div className="alternative-div">
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									onChange={onAlternativeValueChange}
-								/>
+						{showAlternatives && (
+							<div className="alternative-wrap">
+								<div className="alternative-div">
+									<textarea
+										className="alternative-box"
+										value={alternativeValue}
+										onChange={onAlternativeValueChange}
+									/>
+								</div>
+								<div className="CopyButton-div">
+									<CopyButton text={alternativeValue} />
+									<TextToSpeech outputValue={alternativeValue} />
+								</div>
 							</div>
-							<div className="CopyButton-div">
-								<CopyButton text={alternativeValue} />
-								<TextToSpeech outputValue={alternativeValue} />
-							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			);

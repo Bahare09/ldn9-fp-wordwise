@@ -1,7 +1,7 @@
 import React from "react";
 import "./AlternativeButton.css";
 
-const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
+const AlternativeButton = ({ outputValue, setAlternativeValue, setShowAlternatives }) => {
 	const getAlternatives = async () => {
 		try {
 			const response = await fetch("/api/alternatives", {
@@ -12,6 +12,7 @@ const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
 			if (response.ok) {
 				const alternative = await response.json();
 				setAlternativeValue(alternative);
+				setShowAlternatives(true);
 			} else {
 				console.log("Error: " + response.status);
 			}
