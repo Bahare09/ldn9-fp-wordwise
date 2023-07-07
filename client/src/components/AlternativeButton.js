@@ -19,10 +19,9 @@ const AlternativeButton = ({ outputValue, setAlternativeValue }) => {
 			console.error("Failed to fetch alternatives:", error);
 		}
 	};
-
 	return (
 		<button onClick={getAlternatives} className="alternative-button">
-			Get Alternatives:
+			Get Alternatives
 		</button>
 	);
 };
