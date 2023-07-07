@@ -1,7 +1,7 @@
 import { Router } from "express";
 import logger from "./utils/logger";
 import { Configuration, OpenAIApi } from "openai";
-
+import db from "./db";
 const router = Router();
 
 router.get("/", (_, res) => {
@@ -89,6 +89,21 @@ router.post("/alternatives", async (req, res) => {
 		res
 			.status(500)
 			.json({ error: "An error occurred while processing the request." });
+	}
+});
+router.get("/test-db", async (req, res) => {
+	try {
+		// Hardcoded query to test the database connection
+		const query = "SELECT NOW() AS current_time";
+		const result = await db.query(query);
+
+		// Extract the current time from the result
+		const currentTime = result.rows[0].current_time;
+
+		res.json({ currentTime });
+	} catch (error) {
+		console.error("Error connecting to the database:", error);
+		res.status(500).json({ error: "Failed to connect to the database" });
 	}
 });
 
