@@ -41,21 +41,21 @@ const About = () => {
 		"Erin - PO",
 	];
 	const linkedins = [
-		"linkedin1",
-		"linkedin2",
-		"linkedin3",
-		"linkedin4",
-		"linkedin5",
-		"linkedin6",
+		"https://www.linkedin.com/in/bahare-bahreinian-002843246/",
+		"https://www.linkedin.com/in/hadi-allahverdi-pournigjeh-a86913224/",
+		"https://www.linkedin.com/in/zahraatayyar/",
+		"https://www.linkedin.com/in/lexi-xing",
+		"https://www.linkedin.com/in/rgcrook/",
+		"https://www.linkedin.com/in/dom-vinyard/",
 		"linkedin7",
 	];
 	const githubs = [
-		"github1",
-		"github2",
-		"github3",
-		"github4",
-		"github5",
-		"github6",
+		"https://github.com/Bahare09",
+		"https://github.com/hadipournigjeh",
+		"https://github.com/ZahraaTayyar",
+		"https://github.com/LexiisYing",
+		"https://github.com/rgc-hdlr",
+		"https://github.com/DomVinyard",
 		"github7",
 	];
 
