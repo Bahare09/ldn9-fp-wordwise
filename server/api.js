@@ -107,22 +107,35 @@ router.post("/alternatives", async (req, res) => {
 			.json({ error: "An error occurred while processing the request." });
 	}
 });
+
 router.post("/saveUserData", async (req, res) => {
 	try {
 		const { name, email, sub } = req.body;
 
-		// Store the user data in the database
-		await db.query(
-			"INSERT INTO users (name, email, google_id) VALUES ($1, $2, $3)",
-			[name, email, sub]
+		// Check if the user already exists in the database
+		const existingUser = await db.query(
+			"SELECT * FROM users WHERE email = $1 ",
+			[email]
 		);
 
-		res.status(200).json({ message: "User data saved successfully" });
+		if (existingUser.rows.length > 0) {
+			// User already exists in the database
+			res.status(200).json({ message: "User data already exists" });
+		} else {
+			// User not found, save the user data in the database
+			await db.query(
+				"INSERT INTO users (name, email, google_id) VALUES ($1, $2, $3)",
+				[name, email, sub]
+			);
+
+			res.status(200).json({ message: "User data saved successfully" });
+		}
 	} catch (error) {
 		logger.error("Error saving user data:", error);
 		res.status(500).json({ error: "Failed to save user data" });
 	}
 });
+
 // router.get("/test-db", async (req, res) => {
 // try {
 // // Hardcoded query to test the database connection

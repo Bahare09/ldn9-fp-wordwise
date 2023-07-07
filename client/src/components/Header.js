@@ -31,10 +31,13 @@ const Header = ({ currentPage }) => {
 		})
 			.then((response) => {
 				if (response.ok) {
-					console.log("User data saved successfully");
+					return response.json(); // Parse the response data as JSON
 				} else {
 					throw new Error("Failed to save user data");
 				}
+			})
+			.then((data) => {
+				console.log(data.message); // Log the response message from the backend
 			})
 			.catch((error) => {
 				console.error("Error saving user data:", error);
