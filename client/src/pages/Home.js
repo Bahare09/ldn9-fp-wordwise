@@ -26,6 +26,11 @@ const Home = () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+
+	const onOutputValueChange = (event) => {
+		setOutputValue(event.target.value);
+	};
+
 	const handleSubmit = (data) => {
 		setOutputValue(data);
 		setShowOutput(true);
@@ -55,7 +60,6 @@ const Home = () => {
 								<textarea
 									className="alternative-box"
 									value={alternativeValue}
-									readOnly
 								/>
 							</div>
 							<div className="CopyButton-div">
@@ -88,7 +92,7 @@ const Home = () => {
 									/>
 								</div>
 								<div className="output-container">
-									<Output outputValue={outputValue} onReset={handleReset} />
+									<Output outputValue={outputValue} onReset={handleReset} onOutputValueChange={onOutputValueChange} />
 								</div>
 							</div>
 							<div>{renderAlternatives()}</div>
