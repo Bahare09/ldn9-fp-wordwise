@@ -65,7 +65,7 @@ const About = () => {
 			<main role="main" className="about-page">
 				<div className="content">
 					<div className="intro-container">
-						<h2>About us</h2>
+						<h1>About us</h1>
 						<p>
 							WordWise is an innovative platform aimed at enhancing and
 							enriching your English skills. Our interactive tools and engaging

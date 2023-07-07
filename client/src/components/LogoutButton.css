@@ -1,20 +1,15 @@
-.login-btn {
+.logout-btn {
     border: none;
-    background-color: #a3b18a;
+    background-color: #007bff;
     padding: 7px 15px;
     border-radius: 5px;
     align-items: center;
     text-align: center;
     color: #fff;
+    margin-left: 20px;
 }
 
-.login-btn:hover {
+.logout-btn:hover {
     background-color: #007bff;
     cursor: pointer;
-}
-
-@media only screen and (max-width: 800px) {
-  .login-btn {
-    background-color: #879471;
-  }
 }

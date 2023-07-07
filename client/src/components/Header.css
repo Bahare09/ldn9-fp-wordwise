@@ -9,6 +9,8 @@
     top: 0;
     z-index: 100;
     min-height: 50px;
+    background-color: rgb(49, 48, 48);
+    color: white;
 }
 .header-nav-container {
     display: flex;
@@ -19,8 +21,7 @@
 
 .header-title {
     font-size: 24px;
-    color: #333;
-
+    color: rgb(255, 255, 255);
 }
 
 .logo-header {
@@ -33,9 +34,17 @@
     transform: scale(1.01)
 }
 
+.header-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding-right: 1em;
+}
+
 .header-nav {
     display: flex;
     justify-content: space-between;
+    width: 200px;
     position: fixed;
     top: 0;
     right: 0;
@@ -45,26 +54,22 @@
     transform: translateX(100%);
     transition: transform 0.8s ease-out;
 }
-.header-nav.open {
-    transform: translateX(0);
-}
 
 .header-nav-link {
     text-decoration: none;
-    color: #333;
-    padding: 10px 7px;
+    color: #fff;
+    padding: 0 7px;
 }
 
 .header-nav-link,
 .Login-container button {
     box-sizing: border-box;
-    padding: 10px; 
-    line-height: 1.5;
 }
+
 .header-nav-link:hover {
     border-left:  #a3b18a 3px solid;
     border-right: #a3b18a 3px solid;
-    color: black;
+    color: #fff;
 }
 .Login-container button {
     border: none;
