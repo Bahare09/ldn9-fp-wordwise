@@ -32,8 +32,6 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 		} catch (error) {
 			console.log(error);
 		}
-
-		setInputValue("");
 	};
 
 	return (
