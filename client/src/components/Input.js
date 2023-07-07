@@ -44,9 +44,11 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				placeholder="Write your text here for corrected and alternative suggestions..."
 				className="input-field"
 			/>
-			<button type="submit" className="submit-button" onClick={handleSubmit}>
-				&#10148;
-			</button>
+			<div className="submit-btn-container">
+				<button type="submit" className="submit-button" onClick={handleSubmit}>
+					&#10148;
+				</button>
+			</div>
 		</div>
 	);
 };

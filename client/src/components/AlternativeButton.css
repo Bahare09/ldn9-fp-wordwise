@@ -1,23 +1,19 @@
-.alternative-button {
-    display: inline-block;
-    padding: 6px;
+.alternative-button, .reset-button {
     background-color: #a3b18a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    display: inline-block;
     border-radius: 4px;
+    cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s;
+    padding: 7px 10px;
+    border: none;
+    color: #fff;
 }
+
 .reset-button{
-    display: inline-block;
-    padding: 6px;
     margin-left: 20px;
-    background-color: #a3b18a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: background-color 0.3s;
+}
+
+.alternative-button:hover, .reset-button:hover {
+    background-color: #007bff;
 }
