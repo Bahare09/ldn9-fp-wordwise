@@ -106,4 +106,9 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+    .element-box{
+        width: 90%;
+        height: 80%;
+    }
+    
 }
