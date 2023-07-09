@@ -166,9 +166,9 @@ textarea {
 
 .alternative-container {
 	display: flex;
-	width: 100%;
+	width: 93%;
 	justify-content: center;
-	margin: 10px 0;
+	margin: auto;
 	padding-bottom: 50px;
 }
 
