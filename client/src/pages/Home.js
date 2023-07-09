@@ -51,6 +51,7 @@ const Home = () => {
 				email: user.email,
 				sub: user.sub,
 			};
+			console.log(userData);
 
 			saveUserData(userData);
 		}
@@ -79,6 +80,18 @@ const Home = () => {
 		setInputValue("");
 	};
 
+	const handleSave = () => {
+		const userData = {
+			email: user.email,
+			input: inputValue,
+			output: outputValue,
+			alternative: alternativeValue,
+		};
+		console.log(userData);
+
+		saveUserData(userData);
+	};
+
 	const renderAlternatives = () => {
 		if (outputValue) {
 			return (
@@ -91,6 +104,9 @@ const Home = () => {
 							/>
 							<button onClick={handleReset} className="reset-button">
 								Reset
+							</button>
+							<button onClick={handleSave} className="save-button">
+								Save
 							</button>
 						</div>
 						<div className="alternative-wrap">

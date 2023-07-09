@@ -110,17 +110,36 @@ router.post("/alternatives", async (req, res) => {
 
 router.post("/saveUserData", async (req, res) => {
 	try {
-		const { name, email, sub } = req.body;
+		const { name, email, sub, input, output, alternative } = req.body;
 
 		// Check if the user already exists in the database
 		const existingUser = await db.query(
-			"SELECT * FROM users WHERE email = $1 ",
+			"SELECT * FROM users WHERE email = $1",
 			[email]
 		);
 
 		if (existingUser.rows.length > 0) {
 			// User already exists in the database
-			res.status(200).json({ message: "User data already exists" });
+
+			// Check if the input and output values exist in the history table
+			const existingHistory = await db.query(
+				"SELECT * FROM history WHERE input = $1 AND output = $2",
+				[input, output]
+			);
+
+			if (existingHistory.rows.length > 0) {
+				// Input and output values exist in the history table, perform an update
+				await db.query(
+					"UPDATE history SET alternative = $1 WHERE input = $2 AND output = $3",
+					[alternative, input, output]
+				);
+			} else {
+				// Input and output values don't exist in the history table, insert a new row
+				await db.query(
+					"INSERT INTO history (email, input, output, alternative) VALUES ($1, $2, $3, $4)",
+					[email, input, output, alternative]
+				);
+			}
 		} else {
 			// User not found, save the user data in the database
 			await db.query(
@@ -128,27 +147,17 @@ router.post("/saveUserData", async (req, res) => {
 				[name, email, sub]
 			);
 
-			res.status(200).json({ message: "User data saved successfully" });
+			// Insert a new row in the history table
+			await db.query(
+				"INSERT INTO history (email, input, output, alternative) VALUES ($1, $2, $3, $4)",
+				[email, input, output, alternative]
+			);
 		}
+
+		res.status(200).json({ message: "User data saved successfully" });
 	} catch (error) {
-		logger.error("Error saving user data:", error);
 		res.status(500).json({ error: "Failed to save user data" });
 	}
 });
 
-// router.get("/test-db", async (req, res) => {
-// try {
-// // Hardcoded query to test the database connection
-//    const query = "SELECT NOW() AS current_time";
-//    const result = await db.query(query);
-
-// // Extract the current time from the result
-//    const currentTime = result.rows[0].current_time;
-
-//     res.json({ currentTime });
-//     } catch (error) {
-//          console.error("Error connecting to the database:", error);
-//          res.status(500).json({ error: "Failed to connect to the database" });
-//   }
-//});
 export default router;
