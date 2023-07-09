@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
@@ -12,44 +12,6 @@ const Header = ({ currentPage }) => {
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
-
-	const saveUserData = () => {
-		// Extract the necessary user data
-		const userData = {
-			name: user.name,
-			email: user.email,
-			sub: user.sub,
-		};
-
-		// Send the user data to the backend
-		fetch("/api/saveUserData", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(userData),
-		})
-			.then((response) => {
-				if (response.ok) {
-					return response.json(); // Parse the response data as JSON
-				} else {
-					throw new Error("Failed to save user data");
-				}
-			})
-			.then((data) => {
-				console.log(data.message); // Log the response message from the backend
-			})
-			.catch((error) => {
-				console.error("Error saving user data:", error);
-			});
-	};
-
-	useEffect(() => {
-		// Check if the user is authenticated
-		if (isAuthenticated) {
-			saveUserData();
-		}
-	}, [isAuthenticated]); // Run the effect when the isAuthenticated value changes
 
 	let navLinks =
 		currentPage === "home"

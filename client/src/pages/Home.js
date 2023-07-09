@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Input from "../components/Input";
 import Output from "../components/Output";
 import "./Home.css";
@@ -15,6 +16,45 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
+	const { user } = useAuth0();
+
+	const saveUserData = (userData) => {
+		// Send the user data to the backend
+		fetch("/api/saveUserData", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(userData),
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json(); // Parse the response data as JSON
+				} else {
+					throw new Error("Failed to save user data");
+				}
+			})
+			.then((data) => {
+				console.log(data.message); // Log the response message from the backend
+			})
+			.catch((error) => {
+				console.error("Error saving user data:", error);
+			});
+	};
+
+	useEffect(() => {
+		// Check if the user is authenticated
+		if (user) {
+			// Extract the necessary user data
+			const userData = {
+				name: user.name,
+				email: user.email,
+				sub: user.sub,
+			};
+
+			saveUserData(userData);
+		}
+	}, [user]);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -26,16 +66,19 @@ const Home = () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+
 	const handleSubmit = (data) => {
 		setOutputValue(data);
 		setShowOutput(true);
 	};
+
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
 		setAlternativeValue("");
 		setInputValue("");
 	};
+
 	const renderAlternatives = () => {
 		if (outputValue) {
 			return (
@@ -119,4 +162,5 @@ const Home = () => {
 		</main>
 	);
 };
+
 export default Home;
