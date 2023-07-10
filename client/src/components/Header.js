@@ -19,12 +19,12 @@ const Header = ({ currentPage }) => {
 					<Link key="1" className="header-nav-link" to="/about">
 						About
 					</Link>,
-			]
+			  ]
 			: [
 					<Link key="1" className="header-nav-link" to="/">
 						Home
 					</Link>,
-			];
+			  ];
 
 	if (isAuthenticated) {
 		navLinks.push(
