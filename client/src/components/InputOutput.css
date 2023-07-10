@@ -172,7 +172,31 @@ textarea {
 	scale: 1.02;
 }
 
+/* MOBILE INPUT/OUTPUT DESIGN */
+
 @media only screen and (max-width: 800px) {
+	.app {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+
+	.mobile-output-alternatives-wrapper {
+		width: 100%;
+		border: solid 2px;
+		height: 100%;
+	}
+
+	.mobile-output-container {
+		width: 100%;
+		height: 100%;
+		background-color: #d7dcce;
+	}
+	.input-container {
+		width: 100%;
+	}
 	.input-wrapper {
     height: 100%;
   	}
@@ -185,6 +209,20 @@ textarea {
 		display: flex;
 		justify-content: flex-end;
 		padding-right: 20px;
+		padding-bottom: 20px;
+	}
+
+	.back-button {
+		padding: 10px;
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		cursor: pointer;
+		border-radius: 50%;
+		rotate: 180deg;
+		height: 55px;
+		width: 55px;
+		font-size: 30px;
 	}
 }
 

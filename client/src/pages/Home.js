@@ -167,8 +167,8 @@ const Home = () => {
 					</div>
 				)}
 				{isMobile && showOutput && (
-					<div>
-						<div>
+					<div className="mobile-output-alternatives-wrapper">
+						<div className="mobile-output-container">
 							<Output outputValue={outputValue} onReset={handleReset} />
 						</div>
 						{renderAlternatives()}
