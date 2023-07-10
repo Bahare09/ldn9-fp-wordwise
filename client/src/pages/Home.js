@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Input from "../components/Input";
 import Output from "../components/Output";
 import "./Home.css";
@@ -15,8 +16,35 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
-	const [showAlternatives, setShowAlternatives] = useState(false);
+  const [showAlternatives, setShowAlternatives] = useState(false);
 
+	const { user } = useAuth0();
+
+	const saveUserData = (userData) => {
+		// Send the user data to the backend
+		fetch("/api/saveUserData", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(userData),
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json(); // Parse the response data as JSON
+				} else {
+					throw new Error("Failed to save user data");
+				}
+			})
+			.then((data) => {
+				console.log(data.message); // Log the response message from the backend
+			})
+			.catch((error) => {
+				console.error("Error saving user data:", error);
+			});
+	};
+
+	
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -28,16 +56,19 @@ const Home = () => {
 		};
 	}, []);
 
+
 	const handleChange = (setter) => (event) => {
 		setter(event.target.value);
 	};
 	const onOutputValueChange = handleChange(setOutputValue);
 	const onAlternativeValueChange = handleChange(setAlternativeValue);
 
+
 	const handleSubmit = (data) => {
 		setOutputValue(data);
 		setShowOutput(true);
 	};
+
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
@@ -45,6 +76,20 @@ const Home = () => {
 		setInputValue("");
 		setShowAlternatives(false);
 	};
+
+	const handleSave = () => {
+		const userData = {
+			name: user.name,
+			email: user.email,
+			sub: user.sub,
+			input: inputValue,
+			output: outputValue,
+			alternative: alternativeValue,
+		};
+		
+		saveUserData(userData);
+	};
+
 	const renderAlternatives = () => {
 		if (outputValue) {
 			return (
@@ -58,6 +103,9 @@ const Home = () => {
 							/>
 							<button onClick={handleReset} className="reset-button">
 								Reset
+							</button>
+							<button onClick={handleSave} className="save-button">
+								Save
 							</button>
 						</div>
 						{showAlternatives && (
@@ -135,4 +183,5 @@ const Home = () => {
 		</main>
 	);
 };
+
 export default Home;
