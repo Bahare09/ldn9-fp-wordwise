@@ -87,35 +87,6 @@ textarea {
 	.back-btn-container {
 	display: none;
 	}
-	height: 100%;
-}
-
-@media only screen and (min-width: 800px) {
-  .input-wrapper, .input-container, .input-field, .output-container, .output-wrapper, .output-field {
-		border-radius: 20px;
-	}
-
-	.submit-btn-container {
-		border-bottom-right-radius: 20px;
-		border-bottom-left-radius: 20px;
-	}
-
-	.input-container, .output-container {
-		box-shadow: 2px 2px 10px rgb(170, 164, 164);
-		border: solid rgb(188, 183, 183) 2px;
-	}
-
-	.input-wrapper:focus, .input-wrapper:hover {
-		border: solid rgb(107, 104, 104) 3px;
-	}
-
-	.input-wrapper, .input-wrapper {
-		border: solid rgb(132, 127, 127) 2px;
-	}
-
-	.back-btn-container {
-	display: none;
-	}
 }
 
 .input-wrapper {
@@ -125,19 +96,6 @@ textarea {
 	height: 100%;
 	background-color: #d7dcce;
 	justify-content: flex-end;
-}
-
-@media only screen and (max-width: 800px) {
-  .input-wrapper {
-    height: 100%;
-  }
-	justify-content: flex-end;
-}
-
-@media only screen and (max-width: 800px) {
-  .input-wrapper {
-    height: 100%;
-  }
 }
 
 .output-container {
@@ -197,21 +155,6 @@ textarea {
 	cursor: default;
 }
 
-.output-mini-buttons-container {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 10px;
-	padding: 30px;
-}
-
-
-.submit-btn-container {
-	display: flex;
-	flex-direction: row-reverse;
-	background-color: #f8faf4;
-}
-
 .submit-button {
 	padding: 10px;
 	background-color: #007bff;
@@ -230,6 +173,10 @@ textarea {
 }
 
 @media only screen and (max-width: 800px) {
+	.input-wrapper {
+    height: 100%;
+  	}
+
 	.submit-btn-container {
 		padding: 20px;
 	}
@@ -238,31 +185,6 @@ textarea {
 		display: flex;
 		justify-content: flex-end;
 		padding-right: 20px;
-	}
-}
-
-@media only screen and (max-width: 800px) {
-	.submit-btn-container {
-		padding: 20px;
-	}
-
-	.back-btn-container {
-		display: flex;
-		justify-content: flex-end;
-		padding-right: 20px;
-	}
-
-	.back-button {
-		padding: 10px;
-		background-color: #007bff;
-		color: #fff;
-		border: none;
-		cursor: pointer;
-		border-radius: 50%;
-		rotate: 180deg;
-		height: 55px;
-		width: 55px;
-		font-size: 30px;
 	}
 }
 
