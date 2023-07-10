@@ -1,5 +1,6 @@
 import React from "react";
 import "./InputOutput.css";
+import SubmitButton from "./SubmitButton";
 
 const Input = ({ inputValue, setInputValue, onSubmit }) => {
 	const handleInputChange = (e) => {
@@ -42,11 +43,7 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				placeholder="Write your text here for corrected and alternative suggestions..."
 				className="input-field"
 			/>
-			<div className="submit-btn-container">
-				<button type="submit" className="submit-button" onClick={handleSubmit}>
-					&#10148;
-				</button>
-			</div>
+			<SubmitButton onClick={handleSubmit} />
 		</div>
 	);
 };
