@@ -6,6 +6,7 @@
 	padding: 0;
 }
 
+/* INPUT OUTPUT CONTAINERS/WRAPPERS */
 .input-output-container {
 	height: 100%;
 	display: flex;
@@ -50,6 +51,8 @@
 textarea {
 	resize: none;
 }
+
+/* SINGULAR INPUT/OUTPUT CONTAINER */
 
 .input-container {
 	background-color: #d7dcce;
@@ -142,6 +145,7 @@ textarea {
 	padding: 30px;
 }
 
+/* SUBMIT BUTTON */
 
 .submit-btn-container {
 	display: flex;
