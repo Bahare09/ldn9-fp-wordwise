@@ -16,7 +16,7 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
-  const [showAlternatives, setShowAlternatives] = useState(false);
+	const [showAlternatives, setShowAlternatives] = useState(false);
 
 	const { user } = useAuth0();
 
@@ -131,14 +131,13 @@ const Home = () => {
 	};
 
 	return (
-		<main role="main">
+		<main className="main" role="main">
 			<div>
 				<Header currentPage="home" />
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
-					<div>
-						<div>
+						<div className="input-output-alternatives-content">
 							<div className="input-output-wrapper">
 								<div className="input-container">
 									<Input
@@ -157,10 +156,6 @@ const Home = () => {
 							</div>
 							<div>{renderAlternatives()}</div>
 						</div>
-						<div>
-							<Footer />
-						</div>
-					</div>
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
@@ -179,6 +174,9 @@ const Home = () => {
 						{renderAlternatives()}
 					</div>
 				)}
+			</div>
+			<div>
+				<Footer />
 			</div>
 		</main>
 	);
