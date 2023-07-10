@@ -55,6 +55,20 @@ const Home = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (isAuthenticated) {
+			// Retrieve the saved user data from localStorage
+			const savedUserData = localStorage.getItem("userData");
+			if (savedUserData) {
+				const { input, output, alternative } = JSON.parse(savedUserData);
+				setInputValue(input);
+				setOutputValue(output);
+				setAlternativeValue(alternative);
+				setShowOutput(true);
+			}
+		}
+	}, [isAuthenticated]);
+
 	const handleChange = (setter) => (event) => {
 		setter(event.target.value);
 	};
@@ -74,22 +88,6 @@ const Home = () => {
 		setShowAlternatives(false);
 	};
 
-	// Save the user data to localStorage
-	const saveUserDataLocally = (userData) => {
-		localStorage.setItem("userData", JSON.stringify(userData));
-	};
-
-	// Retrieve the user data from localStorage
-	const getSavedUserData = () => {
-		const savedData = localStorage.getItem("userData");
-		return savedData ? JSON.parse(savedData) : null;
-	};
-
-	// Clear the saved user data from localStorage
-	const clearSavedUserData = () => {
-		localStorage.removeItem("userData");
-	};
-
 	const handleSave = () => {
 		if (!isAuthenticated) {
 			// Save the user data locally
@@ -98,15 +96,12 @@ const Home = () => {
 				output: outputValue,
 				alternative: alternativeValue,
 			};
-			saveUserDataLocally(userData);
+			localStorage.setItem("userData", JSON.stringify(userData));
 
 			// Redirect to the login page
 			loginWithRedirect();
 			return;
 		}
-
-		// Clear any previously saved user data
-		clearSavedUserData();
 
 		// Proceed with saving the user data to the backend
 		const userData = {
@@ -119,16 +114,6 @@ const Home = () => {
 		};
 		saveUserData(userData);
 	};
-
-	// In the useEffect hook, retrieve any saved user data from localStorage
-	useEffect(() => {
-		const savedUserData = getSavedUserData();
-		if (savedUserData) {
-			setInputValue(savedUserData.input);
-			setOutputValue(savedUserData.output);
-			setAlternativeValue(savedUserData.alternative);
-		}
-	}, []);
 
 	const renderAlternatives = () => {
 		if (outputValue) {
@@ -144,7 +129,7 @@ const Home = () => {
 							<button onClick={handleReset} className="reset-button">
 								Reset
 							</button>
-							<button onClick={handleSave} className="save-button">
+							<button onClick={handleSave} className="reset-button">
 								Save
 							</button>
 						</div>
