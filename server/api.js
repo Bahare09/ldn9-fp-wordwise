@@ -44,18 +44,6 @@ router.post("/correction", async (req, res) => {
 		if (completion.data.choices && completion.data.choices.length > 0) {
 			const output = completion.data.choices[0].message.content;
 
-			// Store the output in the database
-			//await db.query("INSERT INTO history (output) VALUES ($1)", [output]);
-			// Store the output in the database
-			// Store the output in the database
-			try {
-				await db.query("INSERT INTO history (output) VALUES ($1)", [output]);
-			} catch (error) {
-				// Handle database query error
-				logger.error("Error inserting into the database:", error);
-				// You can choose to send an error response to the client here
-				// res.status(500).json({ error: "Failed to insert into the database" });
-			}
 			// Send the response
 			res.json(output);
 		} else {
