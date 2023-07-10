@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./InputOutput.css";
+import Loading from "../components/Loading";
 
 const Input = ({ inputValue, setInputValue, onSubmit }) => {
-	const handleInputChange = (e) => {
-		setInputValue(e.target.value);
-	};
+	const [isLoading, setIsLoading] = useState(false);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		if (!inputValue || inputValue.trim() === "") {
-			// Show a warning message
-			alert("Input cannot be empty");
-			return;
+	useEffect(() => {
+		if (isLoading) {
+			fetchData();
 		}
+	}, [isLoading, inputValue]); // Include inputValue as a dependency
+
+	const fetchData = async () => {
 		try {
 			const response = await fetch("/api/correction", {
 				method: "POST",
@@ -31,9 +30,24 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 			}
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setIsLoading(false);
+			setInputValue("");
 		}
+	};
 
-		setInputValue("");
+	const handleInputChange = (e) => {
+		setInputValue(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (!inputValue || inputValue.trim() === "") {
+			// Show a warning message
+			alert("Input cannot be empty");
+			return;
+		}
+		setIsLoading(true);
 	};
 
 	return (
@@ -45,9 +59,18 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				className="input-field"
 			/>
 			<div className="submit-btn-container">
-				<button type="submit" className="submit-button" onClick={handleSubmit}>
-					&#10148;
-				</button>
+				{isLoading ? (
+					<Loading />
+				) : (
+					<button
+						type="submit"
+						className="submit-button"
+						onClick={handleSubmit}
+						disabled={isLoading}
+					>
+						&#10148;
+					</button>
+				)}
 			</div>
 		</div>
 	);
