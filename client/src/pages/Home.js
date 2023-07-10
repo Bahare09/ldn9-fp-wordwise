@@ -44,24 +44,7 @@ const Home = () => {
 			});
 	};
 
-	useEffect(() => {
-		// Check if the user is authenticated
-		if (user) {
-			// Extract the necessary user data
-			const userData = {
-				name: user.name,
-				email: user.email,
-				sub: user.sub,
-			};
-			console.log(userData);
-
-			saveUserData(userData);
-		}
-	}, [user]);
-
 	
-
-
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -96,13 +79,14 @@ const Home = () => {
 
 	const handleSave = () => {
 		const userData = {
+			name: user.name,
 			email: user.email,
+			sub: user.sub,
 			input: inputValue,
 			output: outputValue,
 			alternative: alternativeValue,
 		};
-		console.log(userData);
-
+		
 		saveUserData(userData);
 	};
 
