@@ -96,6 +96,12 @@ router.post("/alternatives", async (req, res) => {
 	}
 });
 
+const addRecord = async (email, input, output, alternative) => {
+	await db.query(
+		"INSERT INTO history (email, input, output, alternative) VALUES ($1, $2, $3, $4)",
+		[email, input, output, alternative]
+	);
+};
 router.post("/saveUserData", async (req, res) => {
 	try {
 		const { name, email, sub, input, output, alternative } = req.body;
@@ -123,10 +129,7 @@ router.post("/saveUserData", async (req, res) => {
 				);
 			} else {
 				// Input and output values don't exist in the history table, insert a new row
-				await db.query(
-					"INSERT INTO history (email, input, output, alternative) VALUES ($1, $2, $3, $4)",
-					[email, input, output, alternative]
-				);
+				await addRecord(email, input, output, alternative);
 			}
 		} else {
 			// User not found, save the user data in the database
@@ -136,10 +139,7 @@ router.post("/saveUserData", async (req, res) => {
 			);
 
 			// Insert a new row in the history table
-			await db.query(
-				"INSERT INTO history (email, input, output, alternative) VALUES ($1, $2, $3, $4)",
-				[email, input, output, alternative]
-			);
+			await addRecord(email, input, output, alternative);
 		}
 
 		res.status(200).json({ message: "User data saved successfully" });
