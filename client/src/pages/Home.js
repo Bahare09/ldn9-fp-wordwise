@@ -16,9 +16,9 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
-  const [showAlternatives, setShowAlternatives] = useState(false);
+	const [showAlternatives, setShowAlternatives] = useState(false);
 
-	const { user } = useAuth0();
+	const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
 	const saveUserData = (userData) => {
 		// Send the user data to the backend
@@ -44,7 +44,6 @@ const Home = () => {
 			});
 	};
 
-	
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -56,13 +55,11 @@ const Home = () => {
 		};
 	}, []);
 
-
 	const handleChange = (setter) => (event) => {
 		setter(event.target.value);
 	};
 	const onOutputValueChange = handleChange(setOutputValue);
 	const onAlternativeValueChange = handleChange(setAlternativeValue);
-
 
 	const handleSubmit = (data) => {
 		setOutputValue(data);
@@ -77,7 +74,41 @@ const Home = () => {
 		setShowAlternatives(false);
 	};
 
+	// Save the user data to localStorage
+	const saveUserDataLocally = (userData) => {
+		localStorage.setItem("userData", JSON.stringify(userData));
+	};
+
+	// Retrieve the user data from localStorage
+	const getSavedUserData = () => {
+		const savedData = localStorage.getItem("userData");
+		return savedData ? JSON.parse(savedData) : null;
+	};
+
+	// Clear the saved user data from localStorage
+	const clearSavedUserData = () => {
+		localStorage.removeItem("userData");
+	};
+
 	const handleSave = () => {
+		if (!isAuthenticated) {
+			// Save the user data locally
+			const userData = {
+				input: inputValue,
+				output: outputValue,
+				alternative: alternativeValue,
+			};
+			saveUserDataLocally(userData);
+
+			// Redirect to the login page
+			loginWithRedirect();
+			return;
+		}
+
+		// Clear any previously saved user data
+		clearSavedUserData();
+
+		// Proceed with saving the user data to the backend
 		const userData = {
 			name: user.name,
 			email: user.email,
@@ -86,9 +117,18 @@ const Home = () => {
 			output: outputValue,
 			alternative: alternativeValue,
 		};
-		
 		saveUserData(userData);
 	};
+
+	// In the useEffect hook, retrieve any saved user data from localStorage
+	useEffect(() => {
+		const savedUserData = getSavedUserData();
+		if (savedUserData) {
+			setInputValue(savedUserData.input);
+			setOutputValue(savedUserData.output);
+			setAlternativeValue(savedUserData.alternative);
+		}
+	}, []);
 
 	const renderAlternatives = () => {
 		if (outputValue) {
