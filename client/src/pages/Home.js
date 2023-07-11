@@ -75,7 +75,7 @@ const Home = () => {
 	const onOutputValueChange = handleChange(setOutputValue);
 	const onAlternativeValueChange = handleChange(setAlternativeValue);
 
-	const handleSubmit = (data) => {
+	const getCorrection = (data) => {
 		setOutputValue(data);
 		setShowOutput(true);
 	};
@@ -169,7 +169,7 @@ const Home = () => {
 								<Input
 									inputValue={inputValue}
 									setInputValue={setInputValue}
-									onSubmit={handleSubmit}
+									onSubmit={getCorrection}
 								/>
 							</div>
 							<div className="output-container">
@@ -188,7 +188,7 @@ const Home = () => {
 						<Input
 							inputValue={inputValue}
 							setInputValue={setInputValue}
-							onSubmit={handleSubmit}
+							onSubmit={getCorrection}
 						/>
 					</div>
 				)}
