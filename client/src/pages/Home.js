@@ -112,7 +112,7 @@ const Home = () => {
 			output: outputValue,
 			alternative: alternativeValue,
 		};
-    
+
 		saveUserData(userData);
 	};
 
@@ -134,21 +134,6 @@ const Home = () => {
 								Save
 							</button>
 						</div>
-						{showAlternatives && (
-							<div className="alternative-wrap">
-								<div className="alternative-div">
-									<textarea
-										className="alternative-box"
-										value={alternativeValue}
-										onChange={onAlternativeValueChange}
-									/>
-								</div>
-								<div className="CopyButton-div">
-									<CopyButton text={alternativeValue} />
-									<TextToSpeech outputValue={alternativeValue} />
-								</div>
-							</div>
-						)}
 					</div>
 					{showAlternatives && (
 						<div className="alternative-wrap">
@@ -178,7 +163,6 @@ const Home = () => {
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
-
 					<div className="input-output-alternatives-content">
 						<div className="input-output-wrapper">
 							<div className="input-container">
@@ -198,7 +182,6 @@ const Home = () => {
 						</div>
 						{renderAlternatives()}
 					</div>
-
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
