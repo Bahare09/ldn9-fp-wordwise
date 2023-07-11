@@ -6,23 +6,66 @@
 	padding: 0;
 }
 
-textarea {
-	resize: none;
+/* INPUT OUTPUT CONTAINERS/WRAPPERS */
+.input-output-container {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-output-alternatives-content {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 5em;
+
+}
+
+.input-output-container {
+	height: 100%;
+	display: flex;
+
+	flex-direction: column;
+	justify-content: flex-start;
+
+	align-items: center;
 }
 
 .input-output-wrapper {
 	display: flex;
-	width: 100%;
-	padding: 9em 7em;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	padding: 4em 0;
+	margin: 0 5em;
 	gap: 6em;
+	height: 80%;
+	max-height: 600px;
+	min-height: 600px;
+	width: 100%;
+	max-width: 1300px;
+
+	
 }
+
+textarea {
+	resize: none;
+}
+
+/* SINGULAR INPUT/OUTPUT CONTAINER */
 
 .input-container {
 	background-color: #d7dcce;
 	height: 100%;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 750px) {
   .input-wrapper, .input-container, .input-field, .output-container, .output-wrapper, .output-field {
 		border-radius: 20px;
 	}
@@ -59,13 +102,8 @@ textarea {
 	justify-content: flex-end;
 }
 
-@media only screen and (max-width: 800px) {
-  .input-wrapper {
-    height: 93vh;
-  }
-}
-
 .output-container {
+	background-color: #d7dcce;
 	background-color: #d7dcce;
 	height: 100%;
 }
@@ -84,6 +122,8 @@ textarea {
 	height: 100%;
 	border: none;
 	font-size: 16px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -111,11 +151,13 @@ textarea {
 	padding: 30px;
 }
 
+/* SUBMIT BUTTON */
 
 .submit-btn-container {
 	display: flex;
 	flex-direction: row-reverse;
 	background-color: #f8faf4;
+	cursor: default;
 }
 
 .submit-button {
@@ -124,9 +166,6 @@ textarea {
 	color: #fff;
 	border: none;
 	cursor: pointer;
-	/* position: absolute; */
-	/* right: 25px; */
-	/* bottom: 25px; */
 	border-radius: 50%;
 	height: 55px;
 	width: 55px;
@@ -137,58 +176,136 @@ textarea {
 	scale: 1.02;
 }
 
-@media only screen and (max-width: 800px) {
-  .submit-btn-container {
-	padding: 20px;
-  }
+/* MOBILE INPUT/OUTPUT DESIGN */
 
-  .back-btn-container {
+
+@media only screen and (max-width: 760px) {
+
+
+
+	.app {
+	height: 100%;
+	width: 100%;
 	display: flex;
-	justify-content: flex-end;
-	padding-right: 20px;
-}
+	justify-content: center;
+	align-items: center;
+	}
 
-  .back-button {
-	padding: 10px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	cursor: pointer;
-	border-radius: 50%;
-	rotate: 180deg;
-	height: 55px;
-	width: 55px;
-	font-size: 30px;
+	.mobile-output-alternatives-wrapper {
+		width: 100%;
+		border: solid 2px;
+
+		padding-bottom: 1em;
+
+		height: 100%;
+	}
+
+	.mobile-output-container {
+		width: 100%;
+
+		height: 60%;
+		background-color: #d7dcce;
+	}
+
+	.input-container {
+		width: 100%;
+	}
+
+
+	.input-wrapper {
+    height: 100%;
+  	}
+
+
+	/* --- alternative mobile --- */
+
+	.alternative-container {
+	padding: 5em 1em;
+	}
+
+	.alternative-wrap {
+		height: 200px;
+	}
+
+	.alternative-div {
+		height: 100%;
+	}
+
+	.alternative-box {
+		height: 100%;
+		padding: 2em;
+	}
+
+
+	/* --- mobile buttons --- */
+
+
+	.submit-btn-container {
+		padding: 20px;
+	}
+
+	.back-btn-container {
+		display: flex;
+		justify-content: flex-end;
+		padding-right: 20px;
+		padding-bottom: 20px;
+	}
+
+	.back-button {
+		padding: 10px;
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		cursor: pointer;
+		border-radius: 50%;
+		rotate: 180deg;
+		height: 55px;
+		width: 55px;
+		font-size: 30px;
 	}
 }
 
 /* ------------ Alternative Box ---------------------- */
 
-.alternative-container {
-	display: flex;
-	width: 93%;
-	justify-content: center;
-	margin: auto;
-	padding-bottom: 50px;
+
+@media only screen and (min-width: 760px) {
+
+	.alternative-container {
+		height: 400px;
+	}
+
+	.alternative-div {
+		min-height: 200px;
+		max-height: 400px;
+	}
+	
+
 }
 
-.alternative-output {
+.alternative-buttons-container {
+		padding: 0  0 1em 0;
+		width: 100%;
+		max-width: 1300px;
+	}
+
+.alternative-container {
 	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: center;
+	display: flex; 
 	flex-direction: column;
-	width: 90%;
-	justify-content: center;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
+
 }
 
 .alternative-box {
 	width: 100%;
-	padding: 10px;
-	margin: 10px 0 0 0;
 	background-color: #d7dcce;
 	border: none;
-	height: 200px;
+	height: 100%;
 	font-size: 15px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 }
@@ -197,12 +314,22 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-radius: 40px;
+
+	height: 100%;
+	padding: 0 0 2em 0;
+	width: 100%;
+	max-width: 1300px;
+
 }
 
 .alternative-div {
 	display: flex;
 	width: 100%;
+	height: 100%;
+}
+
+.alternative-box {
+	padding: 30px;
 }
 
 .CopyButton-div {
@@ -225,10 +352,6 @@ textarea {
 .input-output-wrapper > .input-container,
 .output-container {
 	width: 50%;
-}
-
-.input-output-wrapper {
-	height: 79vh;
 }
 
 .input-output-wrapper .back-button {

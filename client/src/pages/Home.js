@@ -112,6 +112,7 @@ const Home = () => {
 			output: outputValue,
 			alternative: alternativeValue,
 		};
+    
 		saveUserData(userData);
 	};
 
@@ -120,7 +121,7 @@ const Home = () => {
 			return (
 				<div className="alternative-container">
 					<div className="alternative-output">
-						<div>
+						<div className="alternative-buttons-container">
 							<AlternativeButton
 								outputValue={outputValue}
 								setAlternativeValue={setAlternativeValue}
@@ -149,6 +150,21 @@ const Home = () => {
 							</div>
 						)}
 					</div>
+					{showAlternatives && (
+						<div className="alternative-wrap">
+							<div className="alternative-div">
+								<textarea
+									className="alternative-box"
+									value={alternativeValue}
+									onChange={onAlternativeValueChange}
+								/>
+							</div>
+							<div className="CopyButton-div">
+								<CopyButton text={alternativeValue} />
+								<TextToSpeech outputValue={alternativeValue} />
+							</div>
+						</div>
+					)}
 				</div>
 			);
 		}
@@ -156,36 +172,33 @@ const Home = () => {
 	};
 
 	return (
-		<main role="main">
+		<main className="main" role="main">
 			<div>
 				<Header currentPage="home" />
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
-					<div>
-						<div>
-							<div className="input-output-wrapper">
-								<div className="input-container">
-									<Input
-										inputValue={inputValue}
-										setInputValue={setInputValue}
-										onSubmit={handleSubmit}
-									/>
-								</div>
-								<div className="output-container">
-									<Output
-										outputValue={outputValue}
-										onReset={handleReset}
-										onOutputValueChange={onOutputValueChange}
-									/>
-								</div>
+
+					<div className="input-output-alternatives-content">
+						<div className="input-output-wrapper">
+							<div className="input-container">
+								<Input
+									inputValue={inputValue}
+									setInputValue={setInputValue}
+									onSubmit={handleSubmit}
+								/>
 							</div>
-							<div>{renderAlternatives()}</div>
+							<div className="output-container">
+								<Output
+									outputValue={outputValue}
+									onReset={handleReset}
+									onOutputValueChange={onOutputValueChange}
+								/>
+							</div>
 						</div>
-						<div>
-							<Footer />
-						</div>
+						{renderAlternatives()}
 					</div>
+
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
@@ -197,13 +210,16 @@ const Home = () => {
 					</div>
 				)}
 				{isMobile && showOutput && (
-					<div>
-						<div>
+					<div className="mobile-output-alternatives-wrapper">
+						<div className="mobile-output-container">
 							<Output outputValue={outputValue} onReset={handleReset} />
 						</div>
 						{renderAlternatives()}
 					</div>
 				)}
+			</div>
+			<div>
+				<Footer />
 			</div>
 		</main>
 	);
