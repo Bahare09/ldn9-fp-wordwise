@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../components/Header";
 import "./About.css";
 import bahare from "../images/bahare.jpg";
-import erin from "../images/erin.jpg";
 import hadi from "../images/hadi.jpg";
 import zahraa from "../images/zahraa.jpg";
 import lexi from "../images/lexi.jpg";
@@ -10,7 +9,6 @@ import rob from "../images/rob.jpg";
 import dom from "../images/dom.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
 
 const ElementBox = ({ image, description, linkedin, github, index }) => (
 	<div key={index} className="element-box">
@@ -30,7 +28,7 @@ const ElementBox = ({ image, description, linkedin, github, index }) => (
 );
 
 const About = () => {
-	const images = [bahare, hadi, zahraa, lexi, rob, dom, erin];
+	const images = [bahare, hadi, zahraa, lexi, rob, dom];
 	const descriptions = [
 		"Bahare - Developer",
 		"Hadi - Developer",
@@ -38,7 +36,6 @@ const About = () => {
 		"Lexi - Developer",
 		"Rob - PM",
 		"Dom - Tech Mentor",
-		"Erin - PO",
 	];
 	const linkedins = [
 		"https://www.linkedin.com/in/bahare-bahreinian-002843246/",
@@ -47,7 +44,6 @@ const About = () => {
 		"https://www.linkedin.com/in/lexi-xing",
 		"https://www.linkedin.com/in/rgcrook/",
 		"https://www.linkedin.com/in/dom-vinyard/",
-		"linkedin7",
 	];
 	const githubs = [
 		"https://github.com/Bahare09",
@@ -56,7 +52,6 @@ const About = () => {
 		"https://github.com/LexiisYing",
 		"https://github.com/rgc-hdlr",
 		"https://github.com/DomVinyard",
-		"github7",
 	];
 
 	return (
@@ -87,7 +82,7 @@ const About = () => {
 						))}
 					</div>
 					<div className="elements-container second-row">
-						{images.slice(4, 7).map((image, index) => (
+						{images.slice(4, 6).map((image, index) => (
 							<ElementBox
 								key={index + 4}
 								image={image}
