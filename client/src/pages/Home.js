@@ -18,7 +18,7 @@ const Home = () => {
 	const [alternativeValue, setAlternativeValue] = useState("");
 	const [showAlternatives, setShowAlternatives] = useState(false);
 
-	const { user } = useAuth0();
+	const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
 	const saveUserData = (userData) => {
 		// Send the user data to the backend
@@ -55,6 +55,20 @@ const Home = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (isAuthenticated) {
+			// Retrieve the saved user data from localStorage
+			const savedUserData = localStorage.getItem("userData");
+			if (savedUserData) {
+				const { input, output, alternative } = JSON.parse(savedUserData);
+				setInputValue(input);
+				setOutputValue(output);
+				setAlternativeValue(alternative);
+				setShowOutput(true);
+			}
+		}
+	}, [isAuthenticated]);
+
 	const handleChange = (setter) => (event) => {
 		setter(event.target.value);
 	};
@@ -75,6 +89,21 @@ const Home = () => {
 	};
 
 	const handleSave = () => {
+		if (!isAuthenticated) {
+			// Save the user data locally
+			const userData = {
+				input: inputValue,
+				output: outputValue,
+				alternative: alternativeValue,
+			};
+			localStorage.setItem("userData", JSON.stringify(userData));
+
+			// Redirect to the login page
+			loginWithRedirect();
+			return;
+		}
+
+		// Proceed with saving the user data to the backend
 		const userData = {
 			name: user.name,
 			email: user.email,
@@ -83,7 +112,7 @@ const Home = () => {
 			output: outputValue,
 			alternative: alternativeValue,
 		};
-
+    
 		saveUserData(userData);
 	};
 
@@ -91,18 +120,35 @@ const Home = () => {
 		if (outputValue) {
 			return (
 				<div className="alternative-container">
-					<div className="alternative-buttons-container">
-						<AlternativeButton
-							outputValue={outputValue}
-							setAlternativeValue={setAlternativeValue}
-							setShowAlternatives={setShowAlternatives}
-						/>
-						<button onClick={handleReset} className="reset-button">
-							Reset
-						</button>
-						<button onClick={handleSave} className="save-button">
-							Save
-						</button>
+					<div className="alternative-output">
+						<div className="alternative-buttons-container">
+							<AlternativeButton
+								outputValue={outputValue}
+								setAlternativeValue={setAlternativeValue}
+								setShowAlternatives={setShowAlternatives}
+							/>
+							<button onClick={handleReset} className="reset-button">
+								Reset
+							</button>
+							<button onClick={handleSave} className="reset-button">
+								Save
+							</button>
+						</div>
+						{showAlternatives && (
+							<div className="alternative-wrap">
+								<div className="alternative-div">
+									<textarea
+										className="alternative-box"
+										value={alternativeValue}
+										onChange={onAlternativeValueChange}
+									/>
+								</div>
+								<div className="CopyButton-div">
+									<CopyButton text={alternativeValue} />
+									<TextToSpeech outputValue={alternativeValue} />
+								</div>
+							</div>
+						)}
 					</div>
 					{showAlternatives && (
 						<div className="alternative-wrap">
