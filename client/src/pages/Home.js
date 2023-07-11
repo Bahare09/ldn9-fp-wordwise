@@ -132,6 +132,7 @@ const Home = () => {
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
+
 					<div className="input-output-alternatives-content">
 						<div className="input-output-wrapper">
 							<div className="input-container">
@@ -151,6 +152,7 @@ const Home = () => {
 						</div>
 						{renderAlternatives()}
 					</div>
+
 				)}
 				{isMobile && !showOutput && (
 					<div className="input-container">
