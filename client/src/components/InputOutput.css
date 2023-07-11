@@ -6,6 +6,7 @@
 	padding: 0;
 }
 
+/* INPUT OUTPUT CONTAINERS/WRAPPERS */
 .input-output-container {
 	height: 100%;
 	display: flex;
@@ -16,27 +17,22 @@
 
 .input-output-alternatives-content {
 	height: 100%;
-	width: 1500px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+	padding: 0 5em;
+
 }
 
 .input-output-container {
 	height: 100%;
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
 
-.input-output-alternatives-content {
-	height: 100%;
-	width: 1500px;
-	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+
 	align-items: center;
 }
 
@@ -45,16 +41,24 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	padding: 9em 5em;
+
+	padding: 4em 0;
+	margin: 0 5em;
 	gap: 6em;
-	height: 100%;
+	height: 80%;
+	max-height: 600px;
+	min-height: 600px;
 	width: 100%;
-	max-width: 1500px;
+	max-width: 1300px;
+
+	
 }
 
 textarea {
 	resize: none;
 }
+
+/* SINGULAR INPUT/OUTPUT CONTAINER */
 
 .input-container {
 	background-color: #d7dcce;
@@ -147,6 +151,7 @@ textarea {
 	padding: 30px;
 }
 
+/* SUBMIT BUTTON */
 
 .submit-btn-container {
 	display: flex;
@@ -161,7 +166,6 @@ textarea {
 	color: #fff;
 	border: none;
 	cursor: pointer;
-	
 	border-radius: 50%;
 	height: 55px;
 	width: 55px;
@@ -174,7 +178,11 @@ textarea {
 
 /* MOBILE INPUT/OUTPUT DESIGN */
 
-@media only screen and (max-width: 800px) {
+
+@media only screen and (max-width: 760px) {
+
+
+
 	.app {
 	height: 100%;
 	width: 100%;
@@ -186,20 +194,51 @@ textarea {
 	.mobile-output-alternatives-wrapper {
 		width: 100%;
 		border: solid 2px;
+
+		padding-bottom: 1em;
+
 		height: 100%;
 	}
 
 	.mobile-output-container {
 		width: 100%;
-		height: 100%;
+
+		height: 60%;
 		background-color: #d7dcce;
 	}
+
 	.input-container {
 		width: 100%;
 	}
+
+
 	.input-wrapper {
     height: 100%;
   	}
+
+
+	/* --- alternative mobile --- */
+
+	.alternative-container {
+	padding: 5em 1em;
+	}
+
+	.alternative-wrap {
+		height: 200px;
+	}
+
+	.alternative-div {
+		height: 100%;
+	}
+
+	.alternative-box {
+		height: 100%;
+		padding: 2em;
+	}
+
+
+	/* --- mobile buttons --- */
+
 
 	.submit-btn-container {
 		padding: 20px;
@@ -228,32 +267,42 @@ textarea {
 
 /* ------------ Alternative Box ---------------------- */
 
-.alternative-container {
-	display: flex;
-	width: 93%;
-	justify-content: center;
-	margin: 10px 0;
-	padding-bottom: 50px;
+
+@media only screen and (min-width: 760px) {
+
+	.alternative-container {
+		height: 400px;
+	}
+
+	.alternative-div {
+		min-height: 200px;
+		max-height: 400px;
+	}
+	
+
 }
 
-.alternative-output {
+.alternative-buttons-container {
+		padding: 0  0 1em 0;
+		width: 100%;
+		max-width: 1300px;
+	}
+
+.alternative-container {
 	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: center;
+	display: flex; 
 	flex-direction: column;
-	width: 90%;
-	justify-content: center;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
+
 }
 
 .alternative-box {
 	width: 100%;
-	padding: 10px;
-	margin: 10px 0 0 0;
 	background-color: #d7dcce;
 	border: none;
-	height: 200px;
+	height: 100%;
 	font-size: 15px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
@@ -265,13 +314,22 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-radius: 40px;
-	border-radius: 40px;
+
+	height: 100%;
+	padding: 0 0 2em 0;
+	width: 100%;
+	max-width: 1300px;
+
 }
 
 .alternative-div {
 	display: flex;
 	width: 100%;
+	height: 100%;
+}
+
+.alternative-box {
+	padding: 30px;
 }
 
 .CopyButton-div {
