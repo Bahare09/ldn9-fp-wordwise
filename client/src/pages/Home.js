@@ -1,4 +1,6 @@
+// Home.js
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Input from "../components/Input";
 import Output from "../components/Output";
 import "./Home.css";
@@ -15,6 +17,33 @@ const Home = () => {
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
+	const [showAlternatives, setShowAlternatives] = useState(false);
+	const [isLoading, setIsLoading] = useState(false); // Add the isLoading state
+
+	const { user } = useAuth0();
+
+	const saveUserData = (userData) => {
+		fetch("/api/saveUserData", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(userData),
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error("Failed to save user data");
+				}
+			})
+			.then((data) => {
+				console.log(data.message);
+			})
+			.catch((error) => {
+				console.error("Error saving user data:", error);
+			});
+	};
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -26,16 +55,67 @@ const Home = () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
-	const handleSubmit = (data) => {
-		setOutputValue(data);
-		setShowOutput(true);
+
+	const handleChange = (setter) => (event) => {
+		setter(event.target.value);
 	};
+
+	const onOutputValueChange = handleChange(setOutputValue);
+	const onAlternativeValueChange = handleChange(setAlternativeValue);
+
+	const handleSubmit = () => {
+		if (inputValue.trim() !== "") {
+			setIsLoading(true); // Set loading state to true
+			fetchData();
+		}
+	};
+
+	const fetchData = async () => {
+		try {
+			const response = await fetch("/api/correction", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ input: inputValue }),
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				const correctedSentence = data;
+				setOutputValue(correctedSentence);
+				setShowOutput(true);
+			} else {
+				console.log("Error: " + response.status);
+			}
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+			setInputValue("");
+		}
+	};
+
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
 		setAlternativeValue("");
 		setInputValue("");
+		setShowAlternatives(false);
 	};
+
+	const handleSave = () => {
+		const userData = {
+			name: user.name,
+			email: user.email,
+			sub: user.sub,
+			input: inputValue,
+			output: outputValue,
+			alternative: alternativeValue,
+		};
+		saveUserData(userData);
+	};
+
 	const renderAlternatives = () => {
 		if (outputValue) {
 			return (
@@ -45,24 +125,30 @@ const Home = () => {
 							<AlternativeButton
 								outputValue={outputValue}
 								setAlternativeValue={setAlternativeValue}
+								setShowAlternatives={setShowAlternatives}
 							/>
 							<button onClick={handleReset} className="reset-button">
 								Reset
 							</button>
+							<button onClick={handleSave} className="save-button">
+								Save
+							</button>
 						</div>
-						<div className="alternative-wrap">
-							<div className="alternative-div">
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									readOnly
-								/>
+						{showAlternatives && (
+							<div className="alternative-wrap">
+								<div className="alternative-div">
+									<textarea
+										className="alternative-box"
+										value={alternativeValue}
+										onChange={onAlternativeValueChange}
+									/>
+								</div>
+								<div className="CopyButton-div">
+									<CopyButton text={alternativeValue} />
+									<TextToSpeech outputValue={alternativeValue} />
+								</div>
 							</div>
-							<div className="CopyButton-div">
-								<CopyButton text={alternativeValue} />
-								<TextToSpeech outputValue={alternativeValue} />
-							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			);
@@ -71,31 +157,30 @@ const Home = () => {
 	};
 
 	return (
-		<main role="main">
+		<main className="main" role="main">
 			<div>
 				<Header currentPage="home" />
 			</div>
 			<div className={isMobile ? "app" : "input-output-container"}>
 				{!isMobile && (
-					<div>
-						<div>
-							<div className="input-output-wrapper">
-								<div className="input-container">
-									<Input
-										inputValue={inputValue}
-										setInputValue={setInputValue}
-										onSubmit={handleSubmit}
-									/>
-								</div>
-								<div className="output-container">
-									<Output outputValue={outputValue} onReset={handleReset} />
-								</div>
+					<div className="input-output-alternatives-content">
+						<div className="input-output-wrapper">
+							<div className="input-container">
+								<Input
+									inputValue={inputValue}
+									setInputValue={setInputValue}
+									onSubmit={handleSubmit}
+								/>
 							</div>
-							<div>{renderAlternatives()}</div>
+							<div className="output-container">
+								<Output
+									outputValue={outputValue}
+									onReset={handleReset}
+									onOutputValueChange={onOutputValueChange}
+								/>
+							</div>
 						</div>
-						<div>
-							<Footer />
-						</div>
+						<div>{renderAlternatives()}</div>
 					</div>
 				)}
 				{isMobile && !showOutput && (
@@ -108,15 +193,19 @@ const Home = () => {
 					</div>
 				)}
 				{isMobile && showOutput && (
-					<div>
-						<div>
+					<div className="mobile-output-alternatives-wrapper">
+						<div className="mobile-output-container">
 							<Output outputValue={outputValue} onReset={handleReset} />
 						</div>
 						{renderAlternatives()}
 					</div>
 				)}
 			</div>
+			<div>
+				<Footer />
+			</div>
 		</main>
 	);
 };
+
 export default Home;

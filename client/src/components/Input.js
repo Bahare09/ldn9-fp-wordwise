@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./InputOutput.css";
 import Loading from "../components/Loading";
+import SubmitButton from "./SubmitButton";
 
 const Input = ({ inputValue, setInputValue, onSubmit }) => {
 	const [isLoading, setIsLoading] = useState(false);
 
-	useEffect(() => {
-		if (isLoading) {
+	const handleSubmit = () => {
+		if (inputValue.trim() !== "") {
+			setIsLoading(true);
 			fetchData();
 		}
-	}, [isLoading, inputValue]); // Include inputValue as a dependency
+	};
 
 	const fetchData = async () => {
 		try {
@@ -36,18 +38,8 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 		}
 	};
 
-	const handleInputChange = (e) => {
-		setInputValue(e.target.value);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (!inputValue || inputValue.trim() === "") {
-			// Show a warning message
-			alert("Input cannot be empty");
-			return;
-		}
-		setIsLoading(true);
+	const handleInputChange = (event) => {
+		setInputValue(event.target.value);
 	};
 
 	return (
@@ -62,14 +54,7 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				{isLoading ? (
 					<Loading />
 				) : (
-					<button
-						type="submit"
-						className="submit-button"
-						onClick={handleSubmit}
-						disabled={isLoading}
-					>
-						&#10148;
-					</button>
+					<SubmitButton onClick={handleSubmit} isLoading={isLoading} />
 				)}
 			</div>
 		</div>
