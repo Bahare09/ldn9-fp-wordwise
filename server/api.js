@@ -147,5 +147,18 @@ router.post("/saveUserData", async (req, res) => {
 		res.status(500).json({ error: "Failed to save user data" });
 	}
 });
+// Retrieve user data route
+router.get("/history", async (req, res) => {
+	try {
+		const email = req.user.email; // Assuming you have user information available through authentication middleware
+		// Retrieve user data from the database based on the email
+		const userData = await db.query("SELECT * FROM history WHERE email = $1", [
+			email,
+		]);
+		res.json(userData.rows);
+	} catch (error) {
+		res.status(500).json({ error: "Failed to retrieve user data" });
+	}
+});
 
 export default router;
