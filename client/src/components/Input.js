@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./InputOutput.css";
+import Loading from "../components/Loading";
 import SubmitButton from "./SubmitButton";
 
 const Input = ({ inputValue, setInputValue, onSubmit }) => {
-	const handleInputChange = (e) => {
-		setInputValue(e.target.value);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleSubmit = () => {
+		if (inputValue.trim() !== "") {
+			setIsLoading(true);
+			fetchData();
+		}
 	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		if (!inputValue || inputValue.trim() === "") {
-			// Show a warning message
-			alert("Input cannot be empty");
-			return;
-		}
+	const fetchData = async () => {
 		try {
 			const response = await fetch("/api/correction", {
 				method: "POST",
@@ -32,7 +32,14 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 			}
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setIsLoading(false);
+			setInputValue("");
 		}
+	};
+
+	const handleInputChange = (event) => {
+		setInputValue(event.target.value);
 	};
 
 	return (
@@ -43,7 +50,13 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				placeholder="Write your text here for corrected and alternative suggestions..."
 				className="input-field"
 			/>
-			<SubmitButton onClick={handleSubmit} />
+			<div className="submit-btn-container">
+				{isLoading ? (
+					<Loading />
+				) : (
+					<SubmitButton onClick={handleSubmit} isLoading={isLoading} />
+				)}
+			</div>
 		</div>
 	);
 };

@@ -17,11 +17,11 @@ const Home = () => {
 	const [isMobile, setIsMobile] = useState(false);
 	const [alternativeValue, setAlternativeValue] = useState("");
 	const [showAlternatives, setShowAlternatives] = useState(false);
+	const [isLoading, setIsLoading] = useState(false); // Add the isLoading state
 
 	const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
 	const saveUserData = (userData) => {
-		// Send the user data to the backend
 		fetch("/api/saveUserData", {
 			method: "POST",
 			headers: {
@@ -31,13 +31,13 @@ const Home = () => {
 		})
 			.then((response) => {
 				if (response.ok) {
-					return response.json(); // Parse the response data as JSON
+					return response.json();
 				} else {
 					throw new Error("Failed to save user data");
 				}
 			})
 			.then((data) => {
-				console.log(data.message); // Log the response message from the backend
+				console.log(data.message);
 			})
 			.catch((error) => {
 				console.error("Error saving user data:", error);
@@ -72,12 +72,41 @@ const Home = () => {
 	const handleChange = (setter) => (event) => {
 		setter(event.target.value);
 	};
+
 	const onOutputValueChange = handleChange(setOutputValue);
 	const onAlternativeValueChange = handleChange(setAlternativeValue);
 
-	const handleSubmit = (data) => {
-		setOutputValue(data);
-		setShowOutput(true);
+	const handleSubmit = () => {
+		if (inputValue.trim() !== "") {
+			setIsLoading(true); // Set loading state to true
+			fetchData();
+		}
+	};
+
+	const fetchData = async () => {
+		try {
+			const response = await fetch("/api/correction", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ input: inputValue }),
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				const correctedSentence = data;
+				setOutputValue(correctedSentence);
+				setShowOutput(true);
+			} else {
+				console.log("Error: " + response.status);
+			}
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+			setInputValue("");
+		}
 	};
 
 	const handleReset = () => {
@@ -134,22 +163,22 @@ const Home = () => {
 								Save
 							</button>
 						</div>
+						{showAlternatives && (
+							<div className="alternative-wrap">
+								<div className="alternative-div">
+									<textarea
+										className="alternative-box"
+										value={alternativeValue}
+										onChange={onAlternativeValueChange}
+									/>
+								</div>
+								<div className="CopyButton-div">
+									<CopyButton text={alternativeValue} />
+									<TextToSpeech outputValue={alternativeValue} />
+								</div>
+							</div>
+						)}
 					</div>
-					{showAlternatives && (
-						<div className="alternative-wrap">
-							<div className="alternative-div">
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									onChange={onAlternativeValueChange}
-								/>
-							</div>
-							<div className="CopyButton-div">
-								<CopyButton text={alternativeValue} />
-								<TextToSpeech outputValue={alternativeValue} />
-							</div>
-						</div>
-					)}
 				</div>
 			);
 		}
@@ -180,7 +209,7 @@ const Home = () => {
 								/>
 							</div>
 						</div>
-						{renderAlternatives()}
+						<div>{renderAlternatives()}</div>
 					</div>
 				)}
 				{isMobile && !showOutput && (
