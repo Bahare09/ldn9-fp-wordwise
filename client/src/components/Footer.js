@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import "./Footer.css";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import cyf_brand from "../images/cyf_brand.png";
 
 function Footer() {
-  return (
+	return (
 		<footer>
 			<div className="links-container">
 				<Link
@@ -27,10 +28,7 @@ function Footer() {
 					<Link className="footer-cyf-link" to="https://codeyourfuture.io/">
 						CodeYourFuture
 						<span>
-							<img
-								src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
-								alt="cyf logo"
-							/>
+							<img src={cyf_brand} alt="cyf logo" />
 						</span>
 					</Link>
 					.
