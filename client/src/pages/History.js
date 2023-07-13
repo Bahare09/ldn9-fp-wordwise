@@ -1,19 +1,57 @@
-import React from "react";
-//import "./History.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import React, { useEffect, useState } from "react";
 
 const History = () => {
-	// Replace with your history data or API calls
-	const historyData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+	const { getAccessTokenSilently, user } = useAuth0();
+	const [accessToken, setAccessToken] = useState("");
+	const [historyData, setHistoryData] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const fetchHistoryData = async () => {
+			const token = await getAccessTokenSilently();
+			setAccessToken(token);
+			console.log(token);
+			setLoading(false);
+
+			// Make the GET request to retrieve user's history data
+			const response = await fetch(`/api/history?email=${user.email}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				setHistoryData(data);
+				//
+			} else {
+				throw new Error("Failed to retrieve history data");
+			}
+		};
+
+		fetchHistoryData();
+	}, [getAccessTokenSilently, user.email]);
 
 	return (
-		<div className="history-page">
-			<div className="history-container">
-				{historyData.map((item) => (
-					<div key={item.id}>
-						<p>message</p>
-					</div>
-				))}
-			</div>
+		<div>
+			<h1>History Page</h1>
+
+			<ul>
+				{loading ? (
+					<li>Loading...</li>
+				) : (
+					historyData.map((item) => (
+						<li key={item.id}>
+							<div>Input: {item.input}</div>
+							<div>Output: {item.output}</div>
+							<div>Alternative: {item.alternative}</div>
+							<div>Email: {item.email}</div>
+							<div>Timestamp: {item.stamp}</div>
+						</li>
+					))
+				)}
+			</ul>
 		</div>
 	);
 };

@@ -1,7 +1,9 @@
 import { Router } from "express";
 import logger from "./utils/logger";
 import { Configuration, OpenAIApi } from "openai";
-import db from "./db"; // Import the db module
+import db from "./db";
+import { auth } from "express-oauth2-jwt-bearer";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -147,16 +149,31 @@ router.post("/saveUserData", async (req, res) => {
 		res.status(500).json({ error: "Failed to save user data" });
 	}
 });
-// Retrieve user data route
+
+//Retrieve user's history data route
+
 router.get("/history", async (req, res) => {
 	try {
-		const email = req.user.email; // Assuming you have user information available through authentication middleware
-		// Retrieve user data from the database based on the email
+		const email = req.query.email; // Extract the email from the query parameter
+
+		//const token = req.headers.authorization.split(" ")[1];
+		// Verify and decode the access token
+		//const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+		// Extract the email from the decoded token
+		//const email = decodedToken.email;
+
+		// // Retrieve the user's history data from the database based on the email
 		const userData = await db.query("SELECT * FROM history WHERE email = $1", [
 			email,
 		]);
-		res.json(userData.rows);
+
+		if (userData.rows.length === 0) {
+			res.status(404).json({ error: "No history data found" });
+		} else {
+			res.json(userData.rows);
+		}
 	} catch (error) {
+		console.error("Failed to retrieve user data:", error);
 		res.status(500).json({ error: "Failed to retrieve user data" });
 	}
 });
