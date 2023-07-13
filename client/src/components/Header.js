@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Header.css";
-
 const Header = ({ currentPage }) => {
 	const [isOpen, setIsOpen] = useState(false);
+
+	
 	const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
 	const toggleMenu = () => {
@@ -14,6 +15,7 @@ const Header = ({ currentPage }) => {
 	const handleLogout = () => {
 		logout({ returnTo: window.location.origin });
 	};
+
 
 	let navLinks =
 		currentPage === "home"
@@ -27,14 +29,21 @@ const Header = ({ currentPage }) => {
 						Home
 					</Link>,
 			  ];
-
 	if (isAuthenticated) {
 		navLinks.push(
 			<div key="2" className="header-auth">
+
+				<Link key="3" className="header-nav-link" to="/history">
+					History
+				</Link>
+				<span className="header-welcome"> {user.given_name}</span>
+				<LogoutButton />
+
 				<span className="header-welcome"> {user.name}</span>
 				<Link className="header-nav-link" to="#" onClick={handleLogout}>
 					Log out
 				</Link>
+
 			</div>
 		);
 	} else {
@@ -49,7 +58,6 @@ const Header = ({ currentPage }) => {
 			</Link>
 		);
 	}
-
 	return (
 		<header className="header">
 			<Link to="/">
@@ -76,5 +84,4 @@ const Header = ({ currentPage }) => {
 		</header>
 	);
 };
-
 export default Header;
