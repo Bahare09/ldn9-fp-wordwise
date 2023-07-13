@@ -150,18 +150,20 @@ textarea {
 	flex-direction: row-reverse;
 	background-color: #f8faf4;
 	cursor: default;
+	padding: 30px;
 }
 
 .submit-button {
-	padding: 10px;
 	background-color: #007bff;
 	color: #fff;
-	border: none;
 	cursor: pointer;
-	border-radius: 50%;
-	height: 55px;
-	width: 55px;
-	font-size: 30px;
+	padding: 10px;
+	border: none;
+	border-radius: 7px;
+	font-size: 15px;
+	height: 35px;
+	align-items: center;
+	display: flex;
 }
 
 .submit-button:hover {
@@ -297,18 +299,4 @@ textarea {
 .input-output-wrapper > .input-container,
 .output-container {
 	width: 50%;
-}
-
-.input-output-wrapper .submit-button {
-	padding: 10px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	cursor: pointer;
-	border-radius: 50%;
-	height: 55px;
-	width: 55px;
-	position: relative;
-	left: 2.5em;
-	bottom: 9em;
 }
