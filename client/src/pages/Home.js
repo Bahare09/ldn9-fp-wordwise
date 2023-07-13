@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Input from "../components/Input";
@@ -6,16 +7,15 @@ import "./Home.css";
 import "../components/InputOutput.css";
 import Header from "../components/Header";
 import AlternativeButton from "../components/AlternativeButton";
-import CopyButton from "../components/CopyButton";
 import Footer from "../components/Footer";
-import TextToSpeech from "../components/TextToSpeech";
+import AlternativeBox from "../components/AlternativeBox";
 
 const Home = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [showOutput, setShowOutput] = useState(false);
 	const [outputValue, setOutputValue] = useState("");
 	const [isMobile, setIsMobile] = useState(false);
-	const [alternativeValue, setAlternativeValue] = useState("");
+	const [alternativeValues, setAlternativeValues] = useState([]);
 	const [showAlternatives, setShowAlternatives] = useState(false);
 
 	const { user, isAuthenticated, loginWithRedirect } = useAuth0();
@@ -63,17 +63,24 @@ const Home = () => {
 				const { input, output, alternative } = JSON.parse(savedUserData);
 				setInputValue(input);
 				setOutputValue(output);
-				setAlternativeValue(alternative);
+				setAlternativeValues(alternative);
 				setShowOutput(true);
 			}
 		}
 	}, [isAuthenticated]);
 
-	const handleChange = (setter) => (event) => {
-		setter(event.target.value);
+	const onOutputValueChange = (event) => {
+		setOutputValue(event.target.value);
 	};
-	const onOutputValueChange = handleChange(setOutputValue);
-	const onAlternativeValueChange = handleChange(setAlternativeValue);
+
+	const onAlternativeValueChange = (event, key) => {
+		console.log({ event, key });
+		setAlternativeValues((prev) => {
+			const newAlternativeValues = [...prev];
+			newAlternativeValues[key] = event.target.innerText;
+			return newAlternativeValues;
+		});
+	};
 
 	const getCorrection = (data) => {
 		setOutputValue(data);
@@ -83,7 +90,7 @@ const Home = () => {
 	const handleReset = () => {
 		setShowOutput(false);
 		setOutputValue("");
-		setAlternativeValue("");
+		setAlternativeValues([]);
 		setInputValue("");
 		setShowAlternatives(false);
 	};
@@ -94,7 +101,7 @@ const Home = () => {
 			const userData = {
 				input: inputValue,
 				output: outputValue,
-				alternative: alternativeValue,
+				alternative: alternativeValues,
 			};
 			localStorage.setItem("userData", JSON.stringify(userData));
 
@@ -110,7 +117,7 @@ const Home = () => {
 			sub: user.sub,
 			input: inputValue,
 			output: outputValue,
-			alternative: alternativeValue,
+			alternative: alternativeValues,
 		};
 
 		saveUserData(userData);
@@ -124,7 +131,7 @@ const Home = () => {
 						<div className="alternative-buttons-container">
 							<AlternativeButton
 								outputValue={outputValue}
-								setAlternativeValue={setAlternativeValue}
+								setAlternativeValues={setAlternativeValues}
 								setShowAlternatives={setShowAlternatives}
 							/>
 							<button onClick={handleReset} className="reset-button">
@@ -136,18 +143,18 @@ const Home = () => {
 						</div>
 					</div>
 					{showAlternatives && (
-						<div className="alternative-wrap">
-							<div className="alternative-div">
-								<textarea
-									className="alternative-box"
-									value={alternativeValue}
-									onChange={onAlternativeValueChange}
-								/>
-							</div>
-							<div className="CopyButton-div">
-								<CopyButton text={alternativeValue} />
-								<TextToSpeech outputValue={alternativeValue} />
-							</div>
+						<div className="lexi-alternatives-container">
+							{alternativeValues.map((alternative, index) => {
+								console.log("key", index);
+								return (
+									<AlternativeBox
+										key={index}
+										index={index}
+										alternativeText={alternative}
+										onAlternativeValueChange={onAlternativeValueChange}
+									/>
+								);
+							})}
 						</div>
 					)}
 				</div>
