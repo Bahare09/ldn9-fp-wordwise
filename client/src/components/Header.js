@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
 import "./Header.css";
 const Header = ({ currentPage }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const { isAuthenticated, user } = useAuth0();
+
+	
+	const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
+
+	const handleLogout = () => {
+		logout({ returnTo: window.location.origin });
+	};
+
+
 	let navLinks =
 		currentPage === "home"
 			? [
@@ -25,15 +32,31 @@ const Header = ({ currentPage }) => {
 	if (isAuthenticated) {
 		navLinks.push(
 			<div key="2" className="header-auth">
+
 				<Link key="3" className="header-nav-link" to="/history">
 					History
 				</Link>
 				<span className="header-welcome"> {user.given_name}</span>
 				<LogoutButton />
+
+				<span className="header-welcome"> {user.name}</span>
+				<Link className="header-nav-link" to="#" onClick={handleLogout}>
+					Log out
+				</Link>
+
 			</div>
 		);
 	} else {
-		navLinks.push(<LoginButton key="2" />);
+		navLinks.push(
+			<Link
+				key="2"
+				className="header-nav-link"
+				to="#"
+				onClick={() => loginWithRedirect()}
+			>
+				Sign in
+			</Link>
+		);
 	}
 	return (
 		<header className="header">

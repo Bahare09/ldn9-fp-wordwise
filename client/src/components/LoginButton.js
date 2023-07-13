@@ -1,15 +1,20 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import "./LoginButton.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
+import "./LogoutButton.css";
 
-const LoginButton = () => {
-	const { loginWithRedirect, isAuthenticated } = useAuth0();
+const LogoutButton = () => {
+	const { logout } = useAuth0();
+
+	const handleLogout = () => {
+		logout({ returnTo: window.location.origin + process.env.PUBLIC_URL });
+	};
+
 	return (
-		!isAuthenticated && (
-			<div className="login-container">
-				<button className="login-btn" onClick={() => loginWithRedirect()}>Sign in</button>
-			</div>
-		)
+		<Link className="logout-btn" to="#" onClick={handleLogout}>
+			Log out
+		</Link>
 	);
 };
-export default LoginButton;
+
+export default LogoutButton;

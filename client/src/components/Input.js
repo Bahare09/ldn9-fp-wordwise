@@ -7,7 +7,7 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 		setInputValue(e.target.value);
 	};
 
-	const handleSubmit = async (e) => {
+	const getCorrection = async (e) => {
 		e.preventDefault();
 		if (!inputValue || inputValue.trim() === "") {
 			// Show a warning message
@@ -43,7 +43,7 @@ const Input = ({ inputValue, setInputValue, onSubmit }) => {
 				placeholder="Write your text here for corrected and alternative suggestions..."
 				className="input-field"
 			/>
-			<SubmitButton onClick={handleSubmit} />
+			<SubmitButton onClick={getCorrection} />
 		</div>
 	);
 };
