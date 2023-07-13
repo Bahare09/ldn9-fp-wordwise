@@ -152,9 +152,9 @@ router.post("/saveUserData", async (req, res) => {
 
 //Retrieve user's history data route
 
-router.get("/history", async (req, res) => {
+router.get("/history/:email", async (req, res) => {
 	try {
-		const email = req.query.email; // Extract the email from the query parameter
+		const email = req.params.email; // Extract the email from the query parameter
 
 		//const token = req.headers.authorization.split(" ")[1];
 		// Verify and decode the access token
@@ -175,6 +175,20 @@ router.get("/history", async (req, res) => {
 	} catch (error) {
 		console.error("Failed to retrieve user data:", error);
 		res.status(500).json({ error: "Failed to retrieve user data" });
+	}
+});
+router.delete("/history/:id", async (req, res) => {
+	try {
+		const id = req.params.id;
+
+		const updatedData = await db.query("DELETE FROM history WHERE id = $1", [
+			id,
+		]);
+
+		res.status(200).json(updatedData.rows);
+	} catch (error) {
+		console.error("Failed to delete item:", error);
+		res.status(500).json({ error: "Failed to delete item" });
 	}
 });
 
