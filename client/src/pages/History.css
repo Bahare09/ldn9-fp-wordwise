@@ -1,6 +1,33 @@
+.history-page-wrapper {
+	background-color: #d7dcce;
+}
+
+.history-title {
+	font-size: 22px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.history-main-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #d7dcce;
+	padding: 20px 0;
+}
+
 .history-list {
-	list-style-type: none;
 	padding: 0;
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	list-style: none;
+	width: 100%;
+	max-width: 1800px;
 }
 
 .history-item {
@@ -9,22 +36,43 @@
 
 .item-box {
 	border: 1px solid #ccc;
-	padding: 10px;
-	border-radius: 5px;
+	padding: 20px;
+	border-radius: 10px;
 	background-color: #f5f5f5;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	height: 400px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .item-field {
+	display: flex;
+	flex-direction: column;
 	margin-bottom: 5px;
 }
 
 .item-label {
 	font-weight: bold;
 	color: #333;
+	font-size: 16px;
 }
 
 .item-label,
 .item-field span {
 	font-size: 14px;
+}
+
+.time-stamp-container span {
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.delete-button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
