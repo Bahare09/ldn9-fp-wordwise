@@ -54,30 +54,30 @@ const History = () => {
 						historyData.map((item) => (
 							<li key={item.id} className="history-item">
 								<div className="item-box">
-									<div className="item-field">
-										<span className="item-label">Input:</span>
-										<span>{item.input}</span>
+									<div className="input-output-alternative-history">
+										<div className="item-field">
+											<span className="item-label">Input:</span>
+											<span>{item.input}</span>
+										</div>
+										<div className="item-field">
+											<span className="item-label">Output:</span>
+											<span>{item.output}</span>
+										</div>
+										<div className="item-field">
+											<span className="item-label">Alternative:</span>
+											<span>{item.alternative}</span>
+										</div>
 									</div>
-									<div className="item-field">
-										<span className="item-label">Output:</span>
-										<span>{item.output}</span>
-									</div>
-									<div className="item-field">
-										<span className="item-label">Alternative:</span>
-										<span>{item.alternative}</span>
-									</div>
-									{/* <div className="item-field">
-									<span className="item-label">Email:</span>
-									<span>{item.email}</span>
-								</div> */}
-									<div className="time-stamp-container item-field">
-										<span>{item.stamp}</span>
-									</div>
-									<div className="delete-button-container">
-										<DeleteButton
-											itemId={item.id}
-											onDelete={handleDeleteItem}
-										/>
+									<div className="timestamp-delete-container">
+										<div className="time-stamp-container">
+											<span>{item.stamp}</span>
+										</div>
+										<div className="delete-button-container">
+											<DeleteButton
+												itemId={item.id}
+												onDelete={handleDeleteItem}
+											/>
+										</div>
 									</div>
 								</div>
 							</li>
