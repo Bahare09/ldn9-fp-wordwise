@@ -16,7 +16,6 @@
 	justify-content: flex-start;
 	align-items: center;
 	padding: 0 5em;
-
 }
 
 .input-output-container {
@@ -34,7 +33,8 @@
 	justify-content: center;
 	align-items: center;
 
-	padding: 4em 0;
+	/* padding: 4em 0; */
+	padding: 4em 0 2em 0;
 	margin: 0 5em;
 	gap: 6em;
 	height: 80%;
@@ -42,8 +42,6 @@
 	min-height: 600px;
 	width: 100%;
 	max-width: 1300px;
-
-	
 }
 
 textarea {
@@ -58,7 +56,12 @@ textarea {
 }
 
 @media only screen and (min-width: 750px) {
-  .input-wrapper, .input-container, .input-field, .output-container, .output-wrapper, .output-field {
+	.input-wrapper,
+	.input-container,
+	.input-field,
+	.output-container,
+	.output-wrapper,
+	.output-field {
 		border-radius: 20px;
 	}
 
@@ -67,21 +70,24 @@ textarea {
 		border-bottom-left-radius: 20px;
 	}
 
-	.input-container, .output-container {
+	.input-container,
+	.output-container {
 		box-shadow: 2px 2px 10px rgb(170, 164, 164);
 		border: solid rgb(188, 183, 183) 2px;
 	}
 
-	.input-wrapper:focus, .input-wrapper:hover {
+	.input-wrapper:focus,
+	.input-wrapper:hover {
 		border: solid rgb(107, 104, 104) 3px;
 	}
 
-	.input-wrapper, .input-wrapper {
+	.input-wrapper,
+	.input-wrapper {
 		border: solid rgb(132, 127, 127) 2px;
 	}
 
 	.back-btn-container {
-	display: none;
+		display: none;
 	}
 }
 
@@ -170,14 +176,13 @@ textarea {
 
 /* MOBILE INPUT/OUTPUT DESIGN */
 
-
 @media only screen and (max-width: 760px) {
 	.app {
-	height: 90%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+		height: 90%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.mobile-output-alternatives-wrapper {
@@ -193,7 +198,7 @@ textarea {
 		height: 40%;
 		background-color: #d7dcce;
 	}
-	.output-field{
+	.output-field {
 		border-radius: 20px;
 	}
 
@@ -201,11 +206,9 @@ textarea {
 		width: 100%;
 	}
 
-
 	.input-wrapper {
-    height: 100%;
-  	}
-
+		height: 100%;
+	}
 
 	/* --- alternative mobile --- */
 
@@ -213,13 +216,20 @@ textarea {
 		padding-top: 10px;
 		height: 60%;
 	}
-	.lexi-alternatives-container{
-		height: 60%;
+
+	.lexi-alternatives-container {
+		/* height: 60%; */
+		padding: 20px;
+		line-height: 1.5;
+		width: 100%;
+		/* height: 300px; */
+		overflow-y: auto;
+		background-color: #d7dcce;
+		border-radius: 15px;
+		padding: 20px;
 	}
 
-
 	/* --- mobile buttons --- */
-
 
 	.submit-btn-container {
 		padding: 20px;
@@ -235,62 +245,61 @@ textarea {
 
 /* ------------ Alternative Box ---------------------- */
 
-
 @media only screen and (min-width: 760px) {
-
 	.alternative-container {
-		height: 400px;
+		/* height: 400px; */
+		margin-bottom: 20px;
+	}
+
+	.lexi-alternatives-container {
+		line-height: 1.5;
+		width: 100%;
+		/* height: 300px; */
+		overflow-y: auto;
+		background-color: #d7dcce;
+		border-radius: 15px;
+		padding: 20px;
+		box-shadow: 2px 2px 10px rgb(170, 164, 164);
+		border: solid rgb(188, 183, 183) 2px;
 	}
 }
 
 .alternative-buttons-container {
-		padding: 0  0 1em 0;
-		width: 100%;
-		max-width: 1300px;
-	}
+	padding: 0 0 1em 0;
+	width: 100%;
+	max-width: 1300px;
+}
 
 .alternative-container {
 	width: 100%;
 	align-items: center;
-	display: flex; 
+	display: flex;
 	flex-direction: column;
-
 }
-.lexi-alternative-text{
-	padding:20px;
+.lexi-alternative-text {
+	padding: 20px;
 }
-.lexi-alternative-container-buttons{
+.lexi-alternative-container-buttons {
 	justify-self: end;
 	display: flex;
 	gap: 8px;
 	padding: 10px;
 }
 
-.lexi-alternatives-container {
-	line-height: 1.5;
-	width: 100%;
-	height: 300px;
-	overflow-y: auto;
-	background-color: #d7dcce;
-	border-radius: 15px;
-
-}
-.lexi-alternative-container{
+.lexi-alternative-container {
 	display: grid;
 }
-
 
 .CopyButton-div {
 	display: flex;
 	background-color: #d7dcce;
 	margin-top: 0;
 	justify-content: end;
-	padding: 0 30px 20px 0; 
+	padding: 0 30px 20px 0;
 	gap: 10px;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
-
 
 /* ------------ Responsive input & output ------------ */
 
