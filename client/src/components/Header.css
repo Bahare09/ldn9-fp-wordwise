@@ -68,9 +68,7 @@
 }
 
 .header-nav-link:hover {
-    border-left:  #a3b18a 3px solid;
-    border-right: #a3b18a 3px solid;
-    color: #fff;
+    color: #007bff;
 }
 .Login-container button {
     border: none;
@@ -82,16 +80,30 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 .Login-container button:hover {
-    border-left: #a3b18a 3px solid;
-    border-right: #a3b18a 3px solid;
     color: black;
 }
+
+/* --- authorised header --- */
+
 .header-auth {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
+.history-header-nav {
+    margin-right: 50px;
+}
+
+.header-welcome {
+    border-right: solid 2px #007bff;
+    padding-right: 7px;
+    cursor: default;
+}
+
+/* --- hamburger menu --- */
 
 .hamburger-menu {
     display: none;

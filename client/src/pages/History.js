@@ -2,6 +2,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import "./History.css";
 import DeleteButton from "../components/DeleteButton";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const History = () => {
 	const { getAccessTokenSilently, user } = useAuth0();
@@ -41,40 +43,50 @@ const History = () => {
 	};
 
 	return (
-		<div>
-			<ul className="history-list">
-				{loading ? (
-					<li>Loading...</li>
-				) : (
-					historyData.map((item) => (
-						<li key={item.id} className="history-item">
-							<div className="item-box">
-								<div className="item-field">
-									<span className="item-label">Input:</span>
-									<span>{item.input}</span>
-								</div>
-								<div className="item-field">
-									<span className="item-label">Output:</span>
-									<span>{item.output}</span>
-								</div>
-								<div className="item-field">
-									<span className="item-label">Alternative:</span>
-									<span>{item.alternative}</span>
-								</div>
-								{/* <div className="item-field">
+		<div className="history-page-wrapper">
+			<Header />
+			<main className="history-main-section">
+				<h1 className="history-title">Your Saved Corrections</h1>
+				<ul className="history-list">
+					{loading ? (
+						<li>Loading...</li>
+					) : (
+						historyData.map((item) => (
+							<li key={item.id} className="history-item">
+								<div className="item-box">
+									<div className="item-field">
+										<span className="item-label">Input:</span>
+										<span>{item.input}</span>
+									</div>
+									<div className="item-field">
+										<span className="item-label">Output:</span>
+										<span>{item.output}</span>
+									</div>
+									<div className="item-field">
+										<span className="item-label">Alternative:</span>
+										<span>{item.alternative}</span>
+									</div>
+									{/* <div className="item-field">
 									<span className="item-label">Email:</span>
 									<span>{item.email}</span>
 								</div> */}
-								<div className="item-field">
-									<span className="item-label">Timestamp:</span>
-									<span>{item.stamp}</span>
+									<div className="time-stamp-container item-field">
+										<span>{item.stamp}</span>
+									</div>
+									<div className="delete-button-container">
+										<DeleteButton
+											itemId={item.id}
+											onDelete={handleDeleteItem}
+										/>
+									</div>
 								</div>
-								<DeleteButton itemId={item.id} onDelete={handleDeleteItem} />
-							</div>
-						</li>
-					))
-				)}
-			</ul>
+							</li>
+						))
+					)}
+				</ul>
+			</main>
+
+			<Footer />
 		</div>
 	);
 };

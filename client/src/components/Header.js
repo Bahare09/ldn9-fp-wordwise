@@ -30,7 +30,7 @@ const Header = ({ currentPage }) => {
 	if (isAuthenticated) {
 		navLinks.push(
 			<div key="2" className="header-auth">
-				<Link key="3" className="header-nav-link" to="/history">
+				<Link key="3" className="history-header-nav header-nav-link" to="/history">
 					History
 				</Link>
 				<span className="header-welcome"> {user.given_name}</span>
