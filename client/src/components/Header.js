@@ -35,6 +35,8 @@ const Header = ({ currentPage }) => {
 					className="history-header-nav header-nav-link"
 					to="/history"
 				>
+
+				
 					History
 				</Link>
 				<div className="name-logout-container">
