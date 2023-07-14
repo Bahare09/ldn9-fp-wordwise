@@ -120,6 +120,7 @@
     z-index: 101;
 }
 
+/*  X button on burger menu */
 .hamburger-menu div {
     width: 2rem;
     height: 0.25rem;
@@ -179,18 +180,38 @@
         transform: translateX(0);
         background: rgba(163, 177, 138, 0.9)
     }
+
+    .header-nav-container {
+        gap: 30px;
+    }
+
+    .header-auth {
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    .history-header-nav {
+        margin: 0;
+    }
+
     .header-nav-link {
-        font-size:xx-large;
-        font-weight: 700;
-        }
+        font-size:19px;
+    }
+
+    .header-welcome {
+        font-size: 16px;
+    }
+
     .Login-container button {
         font-size:xx-large;
-        font-weight: 700;
+        font-weight: 600;
         margin-top: 50px;
     }
+
     .hamburger-menu {
         display: flex;
     }
+
     .header-nav-container {
         flex-direction: column;
     }
