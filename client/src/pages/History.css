@@ -1,20 +1,21 @@
 .history-page-wrapper {
 	background-color: #d7dcce;
-}
-
-.history-title {
-	font-size: 22px;
-	padding: 20px;
-	margin-top: 20px;
+	min-height: 100vh;
 }
 
 .history-main-section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	background-color: #d7dcce;
-	padding: 20px 0;
+	min-height: 100vh;
+	height: 100%;
+}
+
+.history-title {
+	font-size: 22px;
+	padding: 20px;
+	margin-top: 20px;
 }
 
 .history-list {
@@ -60,6 +61,7 @@
 	justify-content: center;
 	gap: 10px;
 	height: 20%;
+	flex-grow: 1;
 	/* border: solid blue 2px; */
 }
 

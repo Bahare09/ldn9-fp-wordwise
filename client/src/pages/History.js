@@ -44,6 +44,7 @@ const History = () => {
 
 	return (
 		<div className="history-page-wrapper">
+		<div className="h"></div>
 			<Header />
 			<main className="history-main-section">
 				<h1 className="history-title">Your Saved Corrections</h1>
@@ -85,7 +86,6 @@ const History = () => {
 					)}
 				</ul>
 			</main>
-
 			<Footer />
 		</div>
 	);
