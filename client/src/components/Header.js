@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Header.css";
+
 const Header = ({ currentPage }) => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
 	const toggleMenu = () => {
@@ -15,32 +15,49 @@ const Header = ({ currentPage }) => {
 		logout({ returnTo: window.location.origin });
 	};
 
-	let navLinks =
-		currentPage === "home"
-			? [
-					<Link key="1" className="header-nav-link" to="/about">
-						About
-					</Link>,
-			  ]
-			: [
-					<Link key="1" className="header-nav-link" to="/">
-						Home
-					</Link>,
-			  ];
-	if (isAuthenticated) {
+	let navLinks = [];
+
+	if (currentPage === "home") {
 		navLinks.push(
-			<div key="2" className="header-auth">
+			<Link key="1" className="header-nav-link" to="/about">
+				About
+			</Link>
+		);
+	} else if (currentPage === "about") {
+		navLinks.push(
+			<Link key="1" className="header-nav-link" to="/">
+				Home
+			</Link>
+		);
+	} else {
+		navLinks.push(
+			<Link key="1" className="header-nav-link" to="/about">
+				About
+			</Link>,
+			<Link key="2" className="header-nav-link" to="/">
+				Home
+			</Link>,
+			<div className="name-logout-container">
+				<span className="header-welcome">{user.given_name}</span>
+				<Link className="header-nav-link" to="#" onClick={handleLogout}>
+					Log out
+				</Link>
+			</div>
+		);
+	}
+
+	if (isAuthenticated && (currentPage === "home" || currentPage === "about")) {
+		navLinks.push(
+			<div key="3" className="header-auth">
 				<Link
-					key="3"
+					key="4"
 					className="history-header-nav header-nav-link"
 					to="/history"
 				>
-
-				
 					History
 				</Link>
 				<div className="name-logout-container">
-					<span className="header-welcome"> {user.given_name}</span>
+					<span className="header-welcome">{user.given_name}</span>
 					<Link className="header-nav-link" to="#" onClick={handleLogout}>
 						Log out
 					</Link>
@@ -49,16 +66,19 @@ const Header = ({ currentPage }) => {
 		);
 	} else {
 		navLinks.push(
-			<Link
-				key="2"
-				className="header-nav-link"
-				to="#"
-				onClick={() => loginWithRedirect()}
-			>
-				Sign in
-			</Link>
+			currentPage === "home" || currentPage === "about" ? (
+				<Link
+					key="5"
+					className="header-nav-link"
+					to="#"
+					onClick={() => loginWithRedirect()}
+				>
+					Sign in
+				</Link>
+			) : null
 		);
 	}
+
 	return (
 		<header className="header">
 			<Link to="/">
@@ -85,4 +105,5 @@ const Header = ({ currentPage }) => {
 		</header>
 	);
 };
+
 export default Header;
