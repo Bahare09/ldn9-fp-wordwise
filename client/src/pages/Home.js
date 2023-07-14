@@ -117,7 +117,7 @@ const Home = () => {
 			sub: user.sub,
 			input: inputValue,
 			output: outputValue,
-			alternative: alternativeValues,
+			alternative: alternativeValues.join(" "),
 		};
 
 		saveUserData(userData);
