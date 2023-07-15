@@ -4,18 +4,21 @@
 	align-items: center;
 	margin: 0;
 	padding: 0;
+	min-height: 100vh;
 }
 
 /* INPUT OUTPUT CONTAINERS/WRAPPERS */
 
 .input-output-alternatives-content {
 	height: 100%;
+	min-height: 100vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	padding: 0 5em;
+	flex-grow: 1;
 }
 
 .input-output-container {
@@ -23,7 +26,6 @@
 	height: 100%;
 	flex-direction: column;
 	justify-content: flex-start;
-
 	align-items: center;
 }
 
@@ -32,16 +34,15 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-
-	/* padding: 4em 0; */
+	flex-grow: 1;
 	padding: 4em 0 2em 0;
 	margin: 0 5em;
 	gap: 6em;
 	height: 80%;
 	max-height: 600px;
-	min-height: 600px;
 	width: 100%;
 	max-width: 1300px;
+	flex: 1;
 }
 
 textarea {
@@ -179,7 +180,8 @@ textarea {
 
 @media only screen and (max-width: 760px) {
 	.app {
-		height: 90%;
+		height: 100%;
+		min-height: calc(100vh - 75px);
 		width: 100%;
 		display: flex;
 		justify-content: center;
@@ -276,6 +278,7 @@ textarea {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	min-height: 0;
 }
 .lexi-alternative-text {
 	padding: 20px;
