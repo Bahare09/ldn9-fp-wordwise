@@ -38,8 +38,7 @@
 	padding: 4em 0 2em 0;
 	margin: 0 5em;
 	gap: 6em;
-	height: 80%;
-	max-height: 600px;
+	min-height: 500px;
 	width: 100%;
 	max-width: 1300px;
 	flex: 1;
@@ -279,19 +278,21 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	min-height: 0;
+	max-width: 1300px;
 }
 .lexi-alternative-text {
 	padding: 20px;
 }
+
+.lexi-alternative-container {
+	display: grid;
+}
+
 .lexi-alternative-container-buttons {
 	justify-self: end;
 	display: flex;
 	gap: 8px;
 	padding: 10px;
-}
-
-.lexi-alternative-container {
-	display: grid;
 }
 
 .CopyButton-div {
